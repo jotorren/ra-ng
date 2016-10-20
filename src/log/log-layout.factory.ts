@@ -1,14 +1,14 @@
 import { Layout, NullLayout, SimpleLayout, PatternLayout, XmlLayout, JsonLayout, HttpPostDataLayout } from 'log4javascript';
 
-interface PatternLayoutParameters {
+export interface PatternLayoutParameters {
     pattern: string;
 }
 
-interface XmlLayoutParameters {
+export interface XmlLayoutParameters {
     combineMessages?: boolean;
 }
 
-interface JsonLayoutParameters {
+export interface JsonLayoutParameters {
     readable?: boolean;
     combineMessages?: boolean;
 }
