@@ -2,4 +2,5 @@
 /typings
 /.typingsrc
 /.vscode/symbols.json
+/publish.txt
 /dist
