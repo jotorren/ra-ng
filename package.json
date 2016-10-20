@@ -1,6 +1,6 @@
 {
-  "name": "raNg",
-  "version": "2.0.0",
+  "name": "ra-ng",
+  "version": "2.0.0-rc1",
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
