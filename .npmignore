@@ -1,0 +1,10 @@
+/node_modules
+/typings
+/src
+/.vscode
+/.typingsrc
+/.gitignore
+/publish.txt
+/tsconfig.json
+/tslint.json
+/typings.json
