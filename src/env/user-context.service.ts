@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ConfigurationService } from '../config';
-import { CacheService, ICache } from 'rang/cache';
+import { CacheService, ICache } from '../cache';
 
 @Injectable()
 export class UserContextService {

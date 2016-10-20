@@ -3,11 +3,7 @@ import { Subscription } from 'rxjs/Rx';
 
 import { MenuItem } from 'primeng/primeng';
 
-// import { LogI18nService } from 'rang/log';
-// import { ErrorsService } from 'rang/error';
-// import { BreadcrumbService } from 'rang/navigation';
-
-import { EventBusService, EnterAnnouncedEventType, UpdateAnnouncedEventType, LeaveConfirmedEventType } from 'rang/event';
+import { EventBusService, EnterAnnouncedEventType, UpdateAnnouncedEventType, LeaveConfirmedEventType } from '../event';
 
 @Component({
     moduleId: module.id,

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Rx';
 
-import { TranslateService } from 'rang/i18n';
-import { EventBusService, BroadcastEvent, ValidationEventType, BroadcastMessage } from 'rang/event';
+import { TranslateService } from '../i18n';
+import { EventBusService, BroadcastEvent, ValidationEventType, BroadcastMessage } from '../event';
 
 @Injectable()
 export class FormValidatorService {
