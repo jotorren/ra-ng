@@ -1,0 +1,45 @@
+{
+  "name": "raNg",
+  "version": "2.0.0",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "tslint": "tslint -c tslint.json src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jotorren/raNg.git"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@angular/common": "2.0.1",
+    "@angular/compiler": "2.0.1",
+    "@angular/core": "2.0.1",
+    "@angular/forms": "2.0.1",
+    "@angular/http": "2.0.1",
+    "@angular/platform-browser": "2.0.1",
+    "@angular/platform-browser-dynamic": "2.0.1",
+    "@angular/router": "3.0.1",
+    "@angular/upgrade": "2.0.1",
+    "angular2-in-memory-web-api": "0.0.21",
+    "angular2-jwt": "0.1.23",
+    "bootstrap": "^3.3.7",
+    "cachefactory": "^1.5.1",
+    "core-js": "^2.4.1",
+    "crypto-js": "^3.1.6",
+    "lodash": "^4.16.2",
+    "log4javascript": "^1.4.15",
+    "ng2-translate": "^2.5.0",
+    "primeng": "^1.0.0-beta.16",
+    "primeui": "^4.1.15",
+    "quill": "^1.0.6",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "^0.19.38",
+    "zone.js": "^0.6.25"
+  },
+  "devDependencies": {
+    "typescript": "^2.0.3",
+    "typings": "^1.4.0"
+  }
+}
