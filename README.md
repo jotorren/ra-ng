@@ -1,2 +1,2 @@
 # ra-ng
-Module to help developing an Angular2 application with PrimeNG.
+Module that aims to agilize the development of an Angular2 application with PrimeNG.
