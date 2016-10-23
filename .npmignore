@@ -1,6 +1,8 @@
 /node_modules
 /typings
 /src
+/test
+/coverage
 /.vscode
 /.typingsrc
 /.gitignore
