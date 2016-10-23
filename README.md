@@ -14,41 +14,41 @@ Module that aims to agilize the development of an Angular2 application with Prim
 git clone --depth 1 https://github.com/jotorren/ra-ng.git
 
 # change directory to our repo
-cd angular2-webpack-starter
+cd ra-ng
 
 # install the repo with npm
 npm install
 
 # start the server
 npm start
-
-# use Hot Module Replacement
-npm run server:dev:hmr
-
-# if you're in China use cnpm
-# https://github.com/cnpm/cnpm
 ```
 
 # Table of Contents
-* [File Structure](#file-structure)
 * [Getting Started](#getting-started)
     * [Dependencies](#dependencies)
     * [Installing](#installing)
     * [Running the app](#running-the-app)
-* [Configuration](#configuration)
-* [Contributing](#contributing)
-* [TypeScript](#typescript)
-* [@Types](#types)
-* [Frequently asked questions](#frequently-asked-questions)
+* [API Reference](#configuration)
+* [Contributors](#contributing)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
 
-# Installation
+# Getting Started
+
+## Dependencies
+
+...
+
+## Installation
 
 * `fork` this repo
 * `clone` your fork
 * `npm install` to install all dependencies
 * `typings install` to install typings declarations
+
+## Running the app
+
+...
 
 # API Reference
 
