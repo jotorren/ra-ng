@@ -12,6 +12,9 @@
     "sourceRoot": "src",
     "outDir": "dist"
   },
+  "files": [
+    "node_modules/typescript/lib/lib.es6.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "typings/main",
