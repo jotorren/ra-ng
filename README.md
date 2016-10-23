@@ -27,4 +27,4 @@ Let people know how they can dive into the project, include important links to t
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+Code licensed under an [Apache License](https://github.com/jotorren/ra-ng/blob/master/LICENSE). Documentation licensed under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/).
