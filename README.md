@@ -1,4 +1,6 @@
 # ra-ng
+
+[![Join the chat at https://gitter.im/ra-ng/Lobby](https://badges.gitter.im/ra-ng/Lobby.svg)](https://gitter.im/ra-ng/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm version](https://badge.fury.io/js/ra-ng.svg)](https://badge.fury.io/js/ra-ng)
 
 Module that aims to agilize the development of an Angular2 application with PrimeNG.
