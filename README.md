@@ -26,10 +26,10 @@ npm start
 # Table of Contents
 * [Getting Started](#getting-started)
     * [Dependencies](#dependencies)
-    * [Installing](#installing)
+    * [Installation](#installation)
     * [Running the app](#running-the-app)
-* [API Reference](#configuration)
-* [Contributors](#contributing)
+* [API Reference](#api-reference)
+* [Contributors](#contributors)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
 
