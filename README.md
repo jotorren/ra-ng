@@ -65,7 +65,6 @@ I'll accept pretty much everything so feel free to open a Pull-Request
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo
 
-* [Twitter: @esrafiki](https://twitter.com/AngularClass)
 * [Gitter: ra-ng/General](https://gitter.im/ra-ng/general)
 
 # License
