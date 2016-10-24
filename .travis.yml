@@ -14,5 +14,6 @@ before_script:
   - sh -e /etc/init.d/xvfb start
 install:
   - npm install
+  - typings install
 script:
   - npm run test-once 
