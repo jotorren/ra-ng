@@ -6,7 +6,6 @@
 
 [![Build Status](https://travis-ci.org/jotorren/ra-ng.svg?branch=master)](https://travis-ci.org/jotorren/ra-ng)
 [![npm version](https://badge.fury.io/js/ra-ng.svg)](https://badge.fury.io/js/ra-ng) 
-
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/jotorren/ra-ng/blob/master/LICENSE) 
 
 
