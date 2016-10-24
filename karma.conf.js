@@ -93,7 +93,7 @@ module.exports = function (config) {
     },
 
     // disabled HtmlReporter; suddenly crashing w/ strange socket error
-    reporters: ['progress', 'html', 'coverage'],//'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'coverage'], //'kjhtml' 'html'],
 
     coverageReporter: {
       reporters: [
