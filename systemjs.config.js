@@ -31,7 +31,7 @@
       'primeng': 'npm:primeng',
       'log4javascript': 'npm:log4javascript',
       'cachefactory': 'npm:cachefactory/dist',
-      'ng2-translate': 'npm:ng2-translate',
+      'ng2-translate': 'npm:ng2-translate/bundles',
       'angular2-jwt': 'npm:angular2-jwt',
       'crypto-js': 'npm:crypto-js',
       'lodash': 'npm:lodash'
@@ -57,6 +57,7 @@
         defaultExtension: 'js'
       },
       'ng2-translate': {
+        main: 'ng2-translate.umd.js',
         defaultExtension: 'js'
       },
       'angular2-jwt': {
