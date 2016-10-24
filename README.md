@@ -22,7 +22,7 @@ cd ra-ng
 npm install
 
 # start the server
-npm start
+typings install
 ```
 
 # Table of Contents
