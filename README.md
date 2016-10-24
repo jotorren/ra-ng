@@ -1,7 +1,6 @@
 # ra-ng
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/jotorren/ra-ng)
-[![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide) 
 [![npm version](https://badge.fury.io/js/ra-ng.svg)](https://badge.fury.io/js/ra-ng) 
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/jotorren/ra-ng/blob/master/LICENSE) 
 [![Build Status](https://travis-ci.org/jotorren/ra-ng.svg?branch=master)](https://travis-ci.org/jotorren/ra-ng)
