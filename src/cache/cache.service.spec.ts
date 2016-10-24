@@ -14,16 +14,9 @@ describe('CacheTest01', () => {
             {
                 'name': 'test',
                 'level': 'DEBUG',
-                'layout': {
-                    'type': 'PatternLayout',
-                    'params': {
-                        'pattern': '%d{HH:mm:ss} %-5p - %m%n'
-                    }
-                },
+                'layout': { 'type': 'PatternLayout', 'params': { 'pattern': '%d{HH:mm:ss} %-5p - %m%n' } },
                 'additivity': false,
-                'appenders': [
-                    'BrowserConsoleAppender'
-                ]
+                'appenders': ['BrowserConsoleAppender']
             }
         ],
         cache: [
@@ -50,7 +43,7 @@ describe('CacheTest01', () => {
                     provide: LogI18nService,
                     useFactory: (i18n: TranslateService) => new LogI18nService('test', i18n),
                     deps: [TranslateService]
-                },
+                }
             ]
         });
 
@@ -61,7 +54,9 @@ describe('CacheTest01', () => {
         (cfgService: ConfigurationService, log: LogI18nService) => {
 
             expect(cfgService).not.toBeNull();
+            expect(cfgService).not.toBeUndefined();
             expect(log).not.toBeNull();
+            expect(log).not.toBeUndefined();
 
             let raCache: CacheService;
             let cache: ICache;
