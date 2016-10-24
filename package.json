@@ -45,6 +45,7 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.34",
     "jasmine-core": "2.5.2",
     "jasmine-node": "^1.14.5",
     "concurrently": "^2.2.0",
