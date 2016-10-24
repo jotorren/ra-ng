@@ -1,3 +1,5 @@
+/// <reference path="../../typings/globals/jasmine/index.d.ts" />
+
 import { TestBed, inject } from '@angular/core/testing';
 import { TranslateModule } from 'ng2-translate/ng2-translate';
 
