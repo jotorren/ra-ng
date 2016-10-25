@@ -7,7 +7,23 @@ import { ConfigurationService } from '../config';
 @Component({
     moduleId: module.id,
     selector: 'app-lang-selector',
-    templateUrl: 'language.component.html'
+    template: `
+            <div class="lang-selector">
+                <span>{{ 'ui.language.selector.label' | translate }}</span>
+                <template [ngTemplateOutlet]="getUIComponent()"></template>
+            </div>
+
+            <template #std>
+            <select (change)="translate.use($event.target.value)">
+                <option *ngFor="let lang of availableLangs" 
+                    [value]="lang.value" [selected]="lang.value === translate.currentLang">{{lang.label}}</option>
+            </select>
+            </template>
+
+            <template #primeng>
+            <p-dropdown [options]="availableLangs" [(ngModel)]="selectedLang" (onChange)="translate.use($event.value)"></p-dropdown>
+            </template>    
+    `
 })
 export class LanguageComponent {
     @ViewChild('std') stdTmpl: TemplateRef<any>;

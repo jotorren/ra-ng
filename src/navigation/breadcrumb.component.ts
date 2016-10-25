@@ -8,7 +8,9 @@ import { EventBusService, EnterAnnouncedEventType, UpdateAnnouncedEventType, Lea
 @Component({
     moduleId: module.id,
     selector: 'app-breadcrumb',
-    templateUrl: 'breadcrumb.component.html'
+    template: `
+            <p-breadcrumb [model]="breadcrumb" [style]="style" [styleClass]="styleClass"></p-breadcrumb>
+    `
 })
 export class BreadcrumbComponent implements OnInit, OnDestroy, OnChanges {
     @Input() baseUrl: string = '';

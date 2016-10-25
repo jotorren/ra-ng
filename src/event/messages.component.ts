@@ -8,7 +8,26 @@ import { BroadcastEvent, ClearMessagesEventType } from '../event';
 @Component({
     moduleId: module.id,
     selector: 'app-messages',
-    templateUrl: 'messages.component.html'
+    template: `
+            <template [ngTemplateOutlet]="getUIComponent()"></template>
+
+            <template #inline>
+            <section id="messages">
+                <p-panel [toggleable]="false">
+                    <header>
+                        <button type="button" (click)="clear()">{{ 'ui.messages.panel.title' | translate }}</button>
+                    </header>
+                    <p-messages [value]="infoMessages" [closable]="closable"></p-messages>
+                    <p-messages [value]="warnMessages" [closable]="closable"></p-messages>
+                    <p-messages [value]="errorMessages" [closable]="closable"></p-messages>
+                </p-panel>
+            </section>
+            </template>
+
+            <template #growl>
+                <p-growl [value]="messages" sticky="sticky" life="life"></p-growl>
+            </template>    
+    `
 })
 export class MessagesComponent implements OnChanges {
     @ViewChild('inline') inlineTmpl: TemplateRef<any>;

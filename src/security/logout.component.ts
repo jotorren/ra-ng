@@ -6,7 +6,21 @@ import { SecurityAuthenticatorService } from './security-authenticator.service';
 @Component({
     moduleId: module.id,
     selector: 'app-logout',
-    templateUrl: 'logout.component.html'
+    template: `
+            <template [ngTemplateOutlet]="getUIComponent()"></template>
+
+            <template #button>
+                <button type="button" (click)="logout($event)" class="logout-button">{{ 'ui.logout.text' | translate }}</button>
+            </template>
+
+            <template #link>
+                <a href="#" (click)="logout($event)" class="logout-link">{{ 'ui.logout.text' | translate }}</a>
+            </template>
+
+            <template #custom>
+                <span (click)="logout($event)" class="logout-custom" title="{{ 'ui.logout.text' | translate }}" ></span>
+            </template>
+  `,
 })
 export class LogoutComponent {
     @ViewChild('button') buttonTmpl: TemplateRef<any>;
