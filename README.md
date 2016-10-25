@@ -11,25 +11,18 @@ Module that aims to agilize the development of an Angular2 application with Prim
 ### Quick start
 
 ```bash
-# clone our repo
-# --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/jotorren/ra-ng.git
+# change directory to your project
+cd myproj
 
-# change directory to our repo
-cd ra-ng
+# install the dependency with npm
+npm install ra-ng --save
 
-# install the repo with npm
-npm install
-
-# start the server
-typings install
+# install typescript definitions
+typings install file:./node_modules/ra-ng/dist/index.d.ts --name rang --save
 ```
 
 # Table of Contents
 * [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Installation](#installation)
-    * [Running the app](#running-the-app)
 * [API Reference](#api-reference)
 * [Contributors](#contributors)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
@@ -37,24 +30,11 @@ typings install
 
 # Getting Started
 
-## Dependencies
-
-...
-
-## Installation
-
-* `fork` this repo
-* `clone` your fork
-* `npm install` to install all dependencies
-* `typings install` to install typings declarations
-
-## Running the app
-
 ...
 
 # API Reference
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+...
 
 # Contributors
 
