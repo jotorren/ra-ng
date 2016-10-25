@@ -12,6 +12,7 @@ import {
   ConfirmDialogModule
 } from 'primeng/primeng';
 
+import { MockComponent } from './models/mock.component';
 import { LoginComponent } from './security/login.component';
 import { LogoutComponent } from './security/logout.component';
 import { ForbiddenComponent } from './security/forbidden.component';
@@ -56,14 +57,14 @@ import { TokenAuthorizationService } from './security/token-authorization.servic
     ConfirmDialogModule
   ],
   declarations: [
-    LoginComponent, LogoutComponent, ForbiddenComponent, MessagesComponent, LanguageComponent,
+    MockComponent, LoginComponent, LogoutComponent, ForbiddenComponent, MessagesComponent, LanguageComponent,
     SpinnerComponent, SpinnerRxComponent, BreadcrumbComponent, BreadcrumbedComponent, ValidateOnBlurDirective
   ],
   exports: [
     CommonModule, HttpModule, FormsModule, TranslateModule,
     MessagesModule, GrowlModule, PanelModule, DropdownModule, ToggleButtonModule, BreadcrumbModule,
     ConfirmDialogModule,
-    LoginComponent, LogoutComponent, ForbiddenComponent, MessagesComponent, LanguageComponent,
+    MockComponent, LoginComponent, LogoutComponent, ForbiddenComponent, MessagesComponent, LanguageComponent,
     SpinnerComponent, SpinnerRxComponent, BreadcrumbComponent, BreadcrumbedComponent, ValidateOnBlurDirective
   ]
 
