@@ -1,6 +1,7 @@
 import { ErrorHandler } from '@angular/core';
 
 import { LogI18nService } from '../log';
+import { ErrorsService } from './errors.service';
 
 export class UncontrolledErrorsService extends ErrorHandler {
 
@@ -9,13 +10,6 @@ export class UncontrolledErrorsService extends ErrorHandler {
     }
 
     handleError(error: any): void {
-        let message: any;
-        if (error instanceof Error) {
-            message = (<Error>error).message;
-        } else {
-            message = error;
-        }
-
-        this.log.error(message);
+        this.log.error(ErrorsService.extractMessage(error));
     }
 }
