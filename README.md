@@ -103,7 +103,7 @@ my-project/
  ```
 
 Configure `package.json` as:
-```
+```json
   "dependencies": {
     "ra-ng": "2.0.0-rc14",
     "@angular/common": "2.1.1",
@@ -154,7 +154,7 @@ Configure `package.json` as:
 ```
 
 Next, `typings.json` as:
-```
+```json
 {
   "globalDependencies": {
     "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160425143459",
@@ -175,7 +175,7 @@ Next, `typings.json` as:
 }
 ```
 And `tsconfig.json` as:
-```
+```json
 {
   "compilerOptions": {
     "target": "es5",
@@ -210,7 +210,7 @@ typings install
 # Programming Guide
 
 Adapt `main.ts` to use ra-ng bootstrap:
-```
+```ts
 // The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ConfigurationLoaderService, LoggerFactory, Logger } from 'rang';
