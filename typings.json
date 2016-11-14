@@ -1,12 +1,4 @@
 {
-  "globalDependencies": {
-    "cachefactory": "registry:dt/cachefactory#1.4.0+20160521151552",
-    "crypto-js": "registry:dt/crypto-js#3.1.4+20160708041433",
-    "lodash": "registry:dt/lodash#4.14.0+20160919145112",
-    "log4javascript": "registry:dt/log4javascript#0.0.0+20160602150953",
-    "node": "registry:dt/node#6.0.0+20160621231320",
-    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255"
-  },
   "dependencies": {
     "primeng": "file:./node_modules/primeng/primeng.d.ts"
   }

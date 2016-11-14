@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "declaration": true,
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
@@ -12,12 +12,13 @@
     "sourceRoot": "src",
     "outDir": "dist"
   },
-  "types": [
-    "core-js"
+  "typeRoots": [
+    "./node_modules/@types/",
+    "./typings/modules"
   ],
+  "compileOnSave": true,
   "exclude": [
-    "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
+    "node_modules/*",
+    "**/*-aot.ts"
   ]
 }
