@@ -5,7 +5,7 @@ import { SecurityAuthenticationService } from './security-authentication.service
 import { SecurityAuthenticationToken } from './security-authentication-token';
 
 @Injectable()
-export class BypassAuthenticationService extends SecurityAuthenticationService{
+export class BypassAuthenticationService extends SecurityAuthenticationService {
 
     tryLogin(token: SecurityAuthenticationToken): Observable<any> {
         return Observable.of('{"security": "bypass login"}');
