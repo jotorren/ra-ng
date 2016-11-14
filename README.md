@@ -31,6 +31,11 @@ typings install file:./node_modules/ra-ng/dist/index.d.ts --name ra-ng --save
 # Getting Started
 
 Clone [ra-ng-quickstart](https://github.com/jotorren/ra-ng-quickstart):
+```bash
+git clone https://github.com/jotorren/ra-ng-quickstart.git my-project
+```
+
+The new project will verify the following structure: 
 ```
 my-project/
  ├──dist/
@@ -98,7 +103,7 @@ my-project/
  └──typings.json
  ```
 
-And then run:
+Finally run:
 ```bash
 # change directory to your project
 cd my-project
