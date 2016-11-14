@@ -38,41 +38,15 @@
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
-      app: {
-        main: './index.js',
-        defaultExtension: 'js'
-      },
-      rxjs: {
-        defaultExtension: 'js'
-      },
-      primeng: {
-        defaultExtension: 'js'
-      },
-      log4javascript: {
-        main: 'log4javascript.js',
-        defaultExtension: 'js'
-      },
-      cachefactory: {
-        main: 'cachefactory.js',
-        defaultExtension: 'js'
-      },
-      'ng2-translate': {
-        main: 'ng2-translate.umd.js',
-        defaultExtension: 'js'
-      },
-      'angular2-jwt': {
-        main: 'angular2-jwt.js',
-        defaultExtension: 'js'
-      },
-      'crypto-js': {
-        main: 'index.js',
-        defaultExtension: 'js',
-        format: 'cjs'
-      },
-      lodash: {
-        main: 'lodash.js',
-        defaultExtension: 'js'
-      },
+      'app': { main: 'index.js', defaultExtension: 'js' },
+      'rxjs': { defaultExtension: 'js' },
+      'primeng': { defaultExtension: 'js' },
+      'log4javascript': { main: 'log4javascript.js', defaultExtension: 'js' },
+      'cachefactory': { main: 'cachefactory.js', defaultExtension: 'js' },
+      'ng2-translate': { main: 'ng2-translate.umd.js', defaultExtension: 'js' },
+      'angular2-jwt': { main: 'angular2-jwt.js', defaultExtension: 'js' },
+      'crypto-js': { main: 'index.js', defaultExtension: 'js', format: 'cjs' },
+      'lodash': { main: 'lodash.js', defaultExtension: 'js' },
     }
   });
 })(this);
