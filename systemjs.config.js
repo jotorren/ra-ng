@@ -27,6 +27,7 @@
       // other libraries
       'rxjs': 'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      'angular2-uuid': 'npm:angular2-uuid',
 
       'primeng': 'npm:primeng',
       'log4javascript': 'npm:log4javascript',
@@ -40,6 +41,7 @@
     packages: {
       'app': { main: 'index.js', defaultExtension: 'js' },
       'rxjs': { defaultExtension: 'js' },
+      'angular2-uuid': { main: 'index.js', defaultExtension: 'js' },
       'primeng': { defaultExtension: 'js' },
       'log4javascript': { main: 'log4javascript.js', defaultExtension: 'js' },
       'cachefactory': { main: 'cachefactory.js', defaultExtension: 'js' },

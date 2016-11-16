@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "angular2-uuid": "file:./node_modules/angular2-uuid/index.d.ts",
     "primeng": "file:./node_modules/primeng/primeng.d.ts"
   }
 }
