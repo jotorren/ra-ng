@@ -1,4 +1,4 @@
-import {setEnabled, Logger, getLogger, getRootLogger, Level, Layout, Appender } from 'log4javascript';
+import { setEnabled, Logger, getLogger, getRootLogger, Level, Layout, Appender } from 'log4javascript';
 
 import { LogLayoutFactory } from './log-layout.factory';
 import { LogAppenderFactory } from './log-appender.factory';
@@ -12,6 +12,13 @@ interface LoggerConfiguration {
     };
     additivity?: boolean;
     appenders?: string[];
+
+    ajax?: {
+        endpoint: string;
+        withCredentials?: boolean;
+        batchSize?: number;
+        timerInterval?: number;
+    };
 }
 
 export class LoggerFactory {
@@ -55,7 +62,7 @@ export class LoggerFactory {
 
             if (conf.appenders) {
                 for (let name of conf.appenders) {
-                    let appender: Appender = LogAppenderFactory.getAppender(name);
+                    let appender: Appender = LogAppenderFactory.getAppender(name, conf.ajax);
                     if (conf.layout) {
                         appender.setLayout(layout);
                     }
