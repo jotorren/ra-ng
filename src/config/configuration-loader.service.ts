@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs/Rx';
 import { sendHttpRequest } from '../http';
+import { ErrorsService } from '../error';
 
 export interface FetchResponse {
     serviceName: string;
@@ -7,12 +8,35 @@ export interface FetchResponse {
 }
 
 export class ConfigurationLoaderService {
-    static bootstrap(conf: any): Observable<string[]> {
-        if (conf.hasOwnProperty('import')) {
-            return ConfigurationLoaderService.fetch(conf['import'], conf);
-        } else {
-            return Observable.of([]);
+    static bootstrap(selector: string, conf: any): Observable<string[]> {
+
+        let environment: Observable<any> = Observable.of('{}');
+        if (selector) {
+            environment = Observable.fromPromise(sendHttpRequest({
+                method: 'GET',
+                url: 'environments/' + selector.trim() + '.json'
+            }));
         }
+
+        return environment
+            .catch((error) => {
+                console.log(ErrorsService.extractMessage(error));
+                return Observable.of('{}');
+            })
+            .map((resp) => {
+                // load environment properties
+                let envconf = JSON.parse(<string>resp);
+                ConfigurationLoaderService.mapObject(envconf, conf);
+                console.log(JSON.stringify(conf));
+                // console.log(conf);
+            })
+            .flatMap((resp) => {
+                if (conf.hasOwnProperty('import')) {
+                    return ConfigurationLoaderService.fetch(conf['import'], conf);
+                } else {
+                    return Observable.of([]);
+                }
+            });
     }
 
     static fetch(urls: string[], conf: any): Observable<string[]> {
@@ -37,5 +61,31 @@ export class ConfigurationLoaderService {
 
             return names;
         });
+    }
+
+    private static mapObject(fromObject, toObject): void {
+        if (fromObject) {
+            for (let prop in fromObject) {
+                if (fromObject.hasOwnProperty(prop)) {
+                    if (fromObject[prop] instanceof Array) {
+                        if (!toObject[prop]) { toObject[prop] = []; }
+                        ConfigurationLoaderService.mapArray(fromObject[prop], toObject[prop]);
+                    } else if (fromObject[prop] instanceof Object) {
+                        if (!toObject[prop]) { toObject[prop] = {}; }
+                        ConfigurationLoaderService.mapObject(fromObject[prop], toObject[prop]);
+                    } else {
+                        toObject[prop] = fromObject[prop];
+                    }
+                }
+            }
+        }
+    }
+
+    private static mapArray(fromArray, toArray): void {
+        if (fromArray) {
+            for (let item of fromArray) {
+                toArray.push(item);
+            }
+        }
     }
 }
