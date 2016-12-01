@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ViewChild, ContentChild, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs/Rx';
 
 import { SpinnerService } from './spinner.service';
@@ -7,6 +7,9 @@ import { SpinnerService } from './spinner.service';
     moduleId: module.id,
     selector: 'rang-spinner-rx',
     template: `
+        <template [ngTemplateOutlet]="getComponentTemplate()"></template>
+
+        <template #default>    
             <div [hidden]="!isActive" class="sk-fading-circle">
                 <div class="sk-circle1 sk-circle"></div>
                 <div class="sk-circle2 sk-circle"></div>
@@ -21,6 +24,7 @@ import { SpinnerService } from './spinner.service';
                 <div class="sk-circle11 sk-circle"></div>
                 <div class="sk-circle12 sk-circle"></div>
             </div>
+        </template>
     `,
     styles: [`
             .sk-fading-circle {
@@ -208,6 +212,9 @@ export class SpinnerRxComponent implements OnInit, OnDestroy {
 
     @Input() public maxTime: number = 120000;
 
+    @ViewChild('default') defaultTemplate: TemplateRef<any>;
+    @ContentChild(TemplateRef) spinnerTemplate: TemplateRef<any>;
+
     constructor(private manager: SpinnerService) {
     }
 
@@ -218,6 +225,10 @@ export class SpinnerRxComponent implements OnInit, OnDestroy {
     ngOnDestroy(): any {
         this.cancelTimeout();
         this.subscription.unsubscribe();
+    }
+
+    getComponentTemplate() {
+        return this.spinnerTemplate ? this.spinnerTemplate : this.defaultTemplate;
     }
 
     private showOrHideIndicator(value: boolean) {

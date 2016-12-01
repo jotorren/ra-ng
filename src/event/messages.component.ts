@@ -7,7 +7,7 @@ import { BroadcastEvent, ClearMessagesEventType } from '../event';
 
 @Component({
     moduleId: module.id,
-    selector: 'app-messages',
+    selector: 'rang-messages',
     template: `
             <template [ngTemplateOutlet]="getUIComponent()"></template>
 

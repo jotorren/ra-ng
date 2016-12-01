@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, OnChanges, SimpleChange, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, SimpleChange, Input, ViewChild, ContentChild, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import { MenuItem } from 'primeng/primeng';
@@ -7,9 +8,13 @@ import { EventBusService, EnterAnnouncedEventType, UpdateAnnouncedEventType, Lea
 
 @Component({
     moduleId: module.id,
-    selector: 'app-breadcrumb',
+    selector: 'rang-breadcrumb',
     template: `
+        <template [ngTemplateOutlet]="getComponentTemplate()"></template>
+
+        <template #default>
             <p-breadcrumb [model]="breadcrumb" [style]="style" [styleClass]="styleClass"></p-breadcrumb>
+        </template>
     `
 })
 export class BreadcrumbComponent implements OnInit, OnDestroy, OnChanges {
@@ -18,6 +23,9 @@ export class BreadcrumbComponent implements OnInit, OnDestroy, OnChanges {
 
     @Input() style: any; // inherited from p-breadcrumb
     @Input() styleClass: string; // inherited from p-breadcrumb
+
+    @ViewChild('default') defaultTemplate: TemplateRef<any>;
+    @ContentChild(TemplateRef) bcTemplate: TemplateRef<any>;
 
     private breadcrumb: MenuItem[];
 
@@ -28,7 +36,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy, OnChanges {
     // constructor(private log: LogI18nService, private crumbService: BreadcrumbService) {
     // }
 
-    constructor(private eventBus: EventBusService) {
+    constructor(private eventBus: EventBusService, private router: Router) {
     }
 
     ngOnInit() {
@@ -90,5 +98,24 @@ export class BreadcrumbComponent implements OnInit, OnDestroy, OnChanges {
         this.enterSubs.unsubscribe();
         this.updateSubs.unsubscribe();
         this.leaveSubs.unsubscribe();
+    }
+
+    getComponentTemplate() {
+        return this.bcTemplate ? this.bcTemplate : this.defaultTemplate;
+    }
+
+    itemClick(event: Event, item: MenuItem) {
+        if (item.disabled) {
+            event.preventDefault();
+            return;
+        }
+
+        if (!item.url || item.routerLink) {
+            event.preventDefault();
+        }
+
+        if (item.routerLink) {
+            this.router.navigate(item.routerLink);
+        }
     }
 }

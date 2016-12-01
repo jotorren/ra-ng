@@ -1,9 +1,12 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, ViewChild, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
     moduleId: module.id,
     selector: 'rang-spinner',
     template: `
+        <template [ngTemplateOutlet]="getComponentTemplate()"></template>
+
+        <template #default>
             <div [hidden]="!isActive" class="sk-fading-circle">
                 <div class="sk-circle1 sk-circle"></div>
                 <div class="sk-circle2 sk-circle"></div>
@@ -18,6 +21,7 @@ import { Component, Input, OnDestroy } from '@angular/core';
                 <div class="sk-circle11 sk-circle"></div>
                 <div class="sk-circle12 sk-circle"></div>
             </div>
+        </template>
     `,
     styles: [`
             .sk-fading-circle {
@@ -202,6 +206,9 @@ export class SpinnerComponent implements OnDestroy {
     private timer;
     private isActive: boolean = false;
 
+    @ViewChild('default') defaultTemplate: TemplateRef<any>;
+    @ContentChild(TemplateRef) spinnerTemplate: TemplateRef<any>;
+
     @Input() public maxTime: number = 120000;
 
     @Input()
@@ -221,6 +228,10 @@ export class SpinnerComponent implements OnDestroy {
 
     ngOnDestroy(): any {
         this.cancelTimeout();
+    }
+
+    getComponentTemplate() {
+        return this.spinnerTemplate ? this.spinnerTemplate : this.defaultTemplate;
     }
 
     private cancelTimeout(): void {

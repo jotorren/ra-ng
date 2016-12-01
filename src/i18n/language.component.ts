@@ -6,7 +6,7 @@ import { ConfigurationService } from '../config';
 
 @Component({
     moduleId: module.id,
-    selector: 'app-lang-selector',
+    selector: 'rang-lang-selector',
     template: `
             <div class="lang-selector">
                 <span>{{ 'ui.language.selector.label' | translate }}</span>
