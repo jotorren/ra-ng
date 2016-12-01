@@ -9,7 +9,7 @@ import { BroadcastEvent, ClearMessagesEventType } from '../event';
     moduleId: module.id,
     selector: 'rang-messages',
     template: `
-            <template [ngTemplateOutlet]="getUIComponent()"></template>
+            <template [ngTemplateOutlet]="getUIComponent()" [ngOutletContext]="{ parent: this }"></template>
 
             <template #inline>
             <section id="messages">

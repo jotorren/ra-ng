@@ -8,7 +8,7 @@ import { SecurityAuthenticatorService } from './security-authenticator.service';
   moduleId: module.id,
   selector: 'rang-login',
   template: `
-    <template [ngTemplateOutlet]="getComponentTemplate()"></template>
+    <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>
 
     <template #default>
       <div class="login-window">

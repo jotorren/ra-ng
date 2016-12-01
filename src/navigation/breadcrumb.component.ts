@@ -10,7 +10,7 @@ import { EventBusService, EnterAnnouncedEventType, UpdateAnnouncedEventType, Lea
     moduleId: module.id,
     selector: 'rang-breadcrumb',
     template: `
-        <template [ngTemplateOutlet]="getComponentTemplate()"></template>
+        <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>
 
         <template #default>
             <p-breadcrumb [model]="breadcrumb" [style]="style" [styleClass]="styleClass"></p-breadcrumb>

@@ -4,7 +4,7 @@ import { Component, Input, OnDestroy, ViewChild, ContentChild, TemplateRef } fro
     moduleId: module.id,
     selector: 'rang-spinner',
     template: `
-        <template [ngTemplateOutlet]="getComponentTemplate()"></template>
+        <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>
 
         <template #default>
             <div [hidden]="!isActive" class="sk-fading-circle">

@@ -9,7 +9,7 @@ import { ConfirmationService, Confirmation } from 'primeng/primeng';
     moduleId: module.id,
     selector: 'rang-confirm-dialog',
     template: `
-        <template [ngTemplateOutlet]="getComponentTemplate()"></template>
+        <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>
 
         <template #default>
             <p-confirmDialog [header]="header" [icon]="icon" [message]="message" [acceptIcon]="acceptIcon"
