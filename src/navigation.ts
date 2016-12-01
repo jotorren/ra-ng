@@ -7,3 +7,4 @@ export * from './navigation/breadcrumbed.component';
 export * from './navigation/stateful.component';
 export * from './navigation/can-deactivate-guard.service';
 export * from './navigation/async-confirmation.service';
+export * from './navigation/confirmation-dialog.component';
