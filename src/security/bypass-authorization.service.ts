@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { SecurityAuthorizationService } from './security-authorization.service';
+import { SecurityAuthorizationService, SecuredObject } from './security-authorization.service';
 
 @Injectable()
 export class BypassAuthorizationService extends SecurityAuthorizationService {
@@ -21,6 +21,14 @@ export class BypassAuthorizationService extends SecurityAuthorizationService {
     }
 
     hasAllRole(roles: string[]): boolean {
+        return true;
+    }
+
+    hasAnyPerm(perms: string[], instance?: SecuredObject): boolean {
+        return true;
+    }
+
+    hasAllPerm(perms: string[], instance?: SecuredObject): boolean {
         return true;
     }
 }

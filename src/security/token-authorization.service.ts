@@ -2,13 +2,17 @@ import { Injectable } from '@angular/core';
 
 import { ConfigurationService } from '../config';
 import { LogI18nService } from '../log';
-import { SecurityAuthorizationService } from './security-authorization.service';
+import { SecurityAuthorizationService, SecuredObject } from './security-authorization.service';
+import { ProfileManagerService } from './profile-manager.service';
 
 @Injectable()
 export class TokenAuthorizationService extends SecurityAuthorizationService {
     private className = this.constructor.name;
 
-    constructor(private cfgService: ConfigurationService, private log: LogI18nService) {
+    constructor(
+        private cfgService: ConfigurationService,
+        private log: LogI18nService,
+        private profileMgr: ProfileManagerService) {
         super();
     }
 
@@ -48,7 +52,7 @@ export class TokenAuthorizationService extends SecurityAuthorizationService {
             return true;
         }
 
-        let userRoles: string[] = this.getUserRoles();
+        let userRoles: string[] = this.profileMgr.getUserRoles();
         if (userRoles) {
             let found = false;
             for (let i = 0; i < roles.length && !found; i++) {
@@ -64,7 +68,7 @@ export class TokenAuthorizationService extends SecurityAuthorizationService {
             return true;
         }
 
-        let userRoles: string[] = this.getUserRoles();
+        let userRoles: string[] = this.profileMgr.getUserRoles();
         if (userRoles) {
             let found = true;
             for (let i = 0; i < roles.length && found; i++) {
@@ -75,29 +79,57 @@ export class TokenAuthorizationService extends SecurityAuthorizationService {
         return false;
     }
 
-    getUserRoles(): string[] {
-        let result: string[] = [];
+    hasAnyPerm(perms: string[], instance?: SecuredObject): boolean {
+        if (undefined === perms || null === perms || perms.length === 0) {
+            return true;
+        }
 
-        if (this.cfgService.conf.security) {
-            let profileConf = this.cfgService.conf.security.profile;
-            if (profileConf) {
-                if (!profileConf.storage ||
-                    !profileConf.storage.provider ||
-                    !profileConf.storage.key) {
-                    this.log.error('log.rang.conf.error', { class: this.className, detail: 'security.profile.storage' });
-                } else {
-                    let profile = profileConf.storage.provider.getItem(profileConf.storage.key);
-                    if (profile) {
-                        if (profileConf.rolesProperty) {
-                            result = JSON.parse(profile)[profileConf.rolesProperty];
-                        } else {
-                            result = JSON.parse(profile);
-                        }
-                    }
+        let userPerms = this.profileMgr.getUserPerms();
+        if (userPerms) {
+            let tocheck;
+            if (instance) {
+                tocheck = userPerms[instance.id];
+            }
+            if (!tocheck) {
+                tocheck = userPerms['*'];
+            }
+
+            if (tocheck) {
+                let found = false;
+                for (let i = 0; i < perms.length && !found; i++) {
+                    found = tocheck.indexOf(perms[i]) > -1;
                 }
+                return found;
             }
         }
 
-        return result;
+        return false;
+    }
+
+    hasAllPerm(perms: string[], instance?: SecuredObject): boolean {
+        if (undefined === perms || null === perms || perms.length === 0) {
+            return true;
+        }
+
+        let userPerms = this.profileMgr.getUserPerms();
+        if (userPerms) {
+            let tocheck;
+            if (instance) {
+                tocheck = userPerms[instance.id];
+            }
+            if (!tocheck) {
+                tocheck = userPerms['*'];
+            }
+
+            if (tocheck) {
+                let found = true;
+                for (let i = 0; i < perms.length && found; i++) {
+                    found = tocheck.indexOf(perms[i]) === -1;
+                }
+                return found;
+            }
+        }
+
+        return false;
     }
 }

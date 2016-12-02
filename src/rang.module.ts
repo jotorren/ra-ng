@@ -27,6 +27,7 @@ import { ValidateOnBlurDirective } from './validation/validate-on-blur.directive
 
 import { SecurityAuthenticatorService } from './security/security-authenticator.service';
 import { SecurityAuthorizatorService } from './security/security-authorizator.service';
+import { ProfileManagerService } from './security/profile-manager.service';
 
 import { SecurityAuthenticationService } from './security/security-authentication.service';
 import { SecurityUserDetailsService } from './security/security-userdetails.service';
@@ -92,6 +93,7 @@ export class RaNGModule {
           providers: [
             SecurityAuthenticatorService,
             SecurityAuthorizatorService,
+            ProfileManagerService,
             { provide: SecurityAuthenticationService, useClass: BypassAuthenticationService },
             { provide: SecurityUserDetailsService, useClass: BypassUserDetailsService },
             { provide: SecurityAuthorizationService, useClass: BypassAuthorizationService },
@@ -104,6 +106,7 @@ export class RaNGModule {
           providers: [
             SecurityAuthenticatorService,
             SecurityAuthorizatorService,
+            ProfileManagerService,
             { provide: SecurityAuthenticationService, useClass: UsernamePasswordBasicAuthenticationService },
             { provide: SecurityUserDetailsService, useClass: BypassUserDetailsService },
             { provide: SecurityAuthorizationService, useClass: TokenAuthorizationService },
@@ -116,6 +119,7 @@ export class RaNGModule {
           providers: [
             SecurityAuthenticatorService,
             SecurityAuthorizatorService,
+            ProfileManagerService,
             { provide: SecurityAuthenticationService, useClass: UsernamePasswordJwtAuthenticationService },
             { provide: SecurityUserDetailsService, useClass: BypassUserDetailsService },
             { provide: SecurityAuthorizationService, useClass: TokenAuthorizationService },
@@ -128,6 +132,7 @@ export class RaNGModule {
           providers: [
             SecurityAuthenticatorService,
             SecurityAuthorizatorService,
+            ProfileManagerService,
             { provide: SecurityAuthenticationService, useClass: UsernamePasswordOAuth2AuthenticationService },
             { provide: SecurityUserDetailsService, useClass: BypassUserDetailsService },
             { provide: SecurityAuthorizationService, useClass: TokenAuthorizationService },
@@ -140,6 +145,7 @@ export class RaNGModule {
           providers: [
             SecurityAuthenticatorService,
             SecurityAuthorizatorService,
+            ProfileManagerService,
             { provide: SecurityAuthenticationService, useClass: UsernamePasswordBasicAuthenticationService },
             { provide: SecurityUserDetailsService, useClass: JsonUserDetailsService },
             { provide: SecurityAuthorizationService, useClass: TokenAuthorizationService },
@@ -152,6 +158,7 @@ export class RaNGModule {
           providers: [
             SecurityAuthenticatorService,
             SecurityAuthorizatorService,
+            ProfileManagerService,
             { provide: SecurityAuthenticationService, useClass: UsernamePasswordJwtAuthenticationService },
             { provide: SecurityUserDetailsService, useClass: JwtUserDetailsService },
             { provide: SecurityAuthorizationService, useClass: TokenAuthorizationService },
@@ -164,6 +171,7 @@ export class RaNGModule {
           providers: [
             SecurityAuthenticatorService,
             SecurityAuthorizatorService,
+            ProfileManagerService,
             { provide: SecurityAuthenticationService, useClass: UsernamePasswordOAuth2AuthenticationService },
             { provide: SecurityUserDetailsService, useClass: JsonUserDetailsService },
             { provide: SecurityAuthorizationService, useClass: TokenAuthorizationService },

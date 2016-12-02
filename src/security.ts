@@ -1,6 +1,7 @@
 export * from './security/security-authenticator.service';
 export * from './security/security-authorizator.service';
 export * from './security/crypto.service';
+export * from './security/profile-manager.service';
 
 export * from './security/security-token-request.service';
 export * from './security/bypass-token-request.service';
