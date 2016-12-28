@@ -1,5 +1,5 @@
 import {
-    Component, OnDestroy, OnInit, AfterViewInit, ViewChild, ContentChild, TemplateRef,
+    Component, OnDestroy, OnInit, ViewChild, ContentChild, TemplateRef,
     Input, EventEmitter
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,7 +20,7 @@ import { ConfirmationService, Confirmation } from 'primeng/primeng';
         </template>
     `
 })
-export class ConfirmationDialogComponent implements OnDestroy, OnInit, AfterViewInit {
+export class ConfirmationDialogComponent implements OnDestroy, OnInit {
 
     @Input() header: string;
     @Input() icon: string;
@@ -68,9 +68,6 @@ export class ConfirmationDialogComponent implements OnDestroy, OnInit, AfterView
 
             this.visible = true;
         });
-    }
-
-    ngAfterViewInit() {
     }
 
     ngOnDestroy() {
