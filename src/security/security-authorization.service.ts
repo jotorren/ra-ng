@@ -1,4 +1,4 @@
-export interface SecuredObject{
+export interface SecuredObject {
     id: string;
 }
 
