@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ContentChild, TemplateRef } from '@angular/core';
+import { Component, ViewChild, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
   // there's no selector because we render this component
@@ -11,13 +11,10 @@ import { Component, OnInit, ViewChild, ContentChild, TemplateRef } from '@angula
         </template>
   `
 })
-export class ForbiddenComponent implements OnInit {
+export class ForbiddenComponent{
 
   @ViewChild('default') defaultTemplate: TemplateRef<any>;
   @ContentChild(TemplateRef) forbiddenTemplate: TemplateRef<any>;
-
-  ngOnInit() {
-  }
 
   getComponentTemplate() {
     return this.forbiddenTemplate ? this.forbiddenTemplate : this.defaultTemplate;
