@@ -206,14 +206,14 @@ import { SpinnerService } from './spinner.service';
     `]
 })
 export class SpinnerRxComponent implements OnInit, OnDestroy {
-    private timer;
-    private isActive: boolean = false;
-    private subscription: Subscription;
-
     @Input() public maxTime: number = 120000;
 
     @ViewChild('default') defaultTemplate: TemplateRef<any>;
     @ContentChild(TemplateRef) spinnerTemplate: TemplateRef<any>;
+
+    private timer;
+    private isActive: boolean = false;
+    private subscription: Subscription;
 
     constructor(private manager: SpinnerService) {
     }
