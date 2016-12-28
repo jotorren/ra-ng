@@ -1,5 +1,5 @@
 import { Appender, AlertAppender, AjaxAppender, BrowserConsoleAppender } from 'log4javascript';
-import { UUID } from 'angular2-uuid';
+import { UUID } from '../env';
 import { AjaxAppenderImmediate } from './log-appender-ajax-immediate';
 import { AjaxAppenderBatch } from './log-appender-ajax-batch';
 
