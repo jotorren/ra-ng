@@ -16,11 +16,11 @@ export function sendHttpRequest(opts: HttpRequestOptions) {
         xhr.open(opts.method, opts.url);
 
         xhr.onload = function () {
-            if (this.status >= 200 && this.status < 300) {
+            if (xhr.status >= 200 && xhr.status < 300) {
                 resolve(xhr.response);
             } else {
                 reject({
-                    status: this.status,
+                    status: xhr.status,
                     statusText: xhr.responseText
                 });
             }
@@ -28,7 +28,7 @@ export function sendHttpRequest(opts: HttpRequestOptions) {
 
         xhr.onerror = function () {
             reject({
-                status: this.status,
+                status: xhr.status,
                 statusText: xhr.statusText
             });
         };
