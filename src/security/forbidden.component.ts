@@ -11,7 +11,7 @@ import { Component, ViewChild, ContentChild, TemplateRef } from '@angular/core';
         </template>
   `
 })
-export class ForbiddenComponent{
+export class ForbiddenComponent {
 
   @ViewChild('default') defaultTemplate: TemplateRef<any>;
   @ContentChild(TemplateRef) forbiddenTemplate: TemplateRef<any>;
