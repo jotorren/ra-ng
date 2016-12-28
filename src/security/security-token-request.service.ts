@@ -15,25 +15,6 @@ export abstract class SecurityTokenRequestService {
         }
     }
 
-    private mergeOptions(providedOpts: RequestOptionsArgs, defaultOpts?: RequestOptions) {
-        let newOptions = defaultOpts || new RequestOptions();
-        if (this.config && this.config.header.globals) {
-            this.setGlobalHeaders(this.config.header.globals, providedOpts);
-        }
-
-        newOptions = newOptions.merge(new RequestOptions(providedOpts));
-
-        return newOptions;
-    }
-
-    private requestHelper(requestArgs: RequestOptionsArgs, additionalOptions?: RequestOptionsArgs): Observable<Response> {
-        let options = new RequestOptions(requestArgs);
-        if (additionalOptions) {
-            options = options.merge(additionalOptions);
-        }
-        return this.request(new Request(this.mergeOptions(options, this.defOpts)));
-    }
-
     protected checkConfiguration(): string {
         let error: string;
 
@@ -111,5 +92,24 @@ export abstract class SecurityTokenRequestService {
 
     public options(url: string, options?: RequestOptionsArgs): Observable<Response> {
         return this.requestHelper({ body: '', method: RequestMethod.Options, url: url }, options);
+    }
+
+    private mergeOptions(providedOpts: RequestOptionsArgs, defaultOpts?: RequestOptions) {
+        let newOptions = defaultOpts || new RequestOptions();
+        if (this.config && this.config.header.globals) {
+            this.setGlobalHeaders(this.config.header.globals, providedOpts);
+        }
+
+        newOptions = newOptions.merge(new RequestOptions(providedOpts));
+
+        return newOptions;
+    }
+
+    private requestHelper(requestArgs: RequestOptionsArgs, additionalOptions?: RequestOptionsArgs): Observable<Response> {
+        let options = new RequestOptions(requestArgs);
+        if (additionalOptions) {
+            options = options.merge(additionalOptions);
+        }
+        return this.request(new Request(this.mergeOptions(options, this.defOpts)));
     }
 }
