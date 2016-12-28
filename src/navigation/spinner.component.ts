@@ -203,13 +203,13 @@ import { Component, Input, OnDestroy, ViewChild, ContentChild, TemplateRef } fro
     `]
 })
 export class SpinnerComponent implements OnDestroy {
-    private timer;
-    private isActive: boolean = false;
-
     @ViewChild('default') defaultTemplate: TemplateRef<any>;
     @ContentChild(TemplateRef) spinnerTemplate: TemplateRef<any>;
 
     @Input() public maxTime: number = 120000;
+
+    private timer;
+    private isActive: boolean = false;
 
     @Input()
     public set isRunning(value: boolean) {
