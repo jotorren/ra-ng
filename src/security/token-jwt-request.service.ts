@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Http, Request, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { tokenNotExpired } from 'angular2-jwt';
 
 import { ConfigurationService } from '../config';
 import { LogI18nService } from '../log';
 import { TranslateService } from '../i18n';
+import { JwtHelper } from './jwt-helper';
 import { SecurityTokenRequestService } from './security-token-request.service';
 
 @Injectable()
 export class TokenJwtRequestService extends SecurityTokenRequestService {
     private className = this.constructor.name;
+
+    private jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(
         cfgService: ConfigurationService,
@@ -35,7 +37,7 @@ export class TokenJwtRequestService extends SecurityTokenRequestService {
             noJwtError = this.cfgService.conf.security.token.jwt.noJwtError;
         }
 
-        if (!tokenNotExpired(undefined, token)) {
+        if (this.jwtHelper.isTokenExpired(token)) {
             if (!noJwtError) {
                 return new Observable<Response>((obs: any) => {
                     obs.error(new Error(this.i18n.instant('security.error.token.jwt.notoken.message')));

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { JwtHelper } from 'angular2-jwt';
 
 import { ConfigurationService } from '../config';
 import { LogI18nService } from '../log';
 import { TranslateService } from '../i18n';
+import { JwtHelper } from './jwt-helper';
 import { SecurityAuthenticationToken } from './security-authentication-token';
 import { SecurityUserDetailsService } from './security-userdetails.service';
 
