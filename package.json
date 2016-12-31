@@ -1,6 +1,6 @@
 {
   "name": "ra-ng",
-  "version": "2.0.0-rc21",
+  "version": "2.0.0-rc22",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
@@ -69,9 +69,9 @@
     "@types/cachefactory": "^1.4.4",
     "@types/core-js": "^0.9.35",
     "@types/crypto-js": "^3.1.32",
-    "@types/jasmine": "^2.5.38",
-    "@types/lodash": "^4.14.44",
+    "@types/jasmine": "^2.5.40",
+    "@types/lodash": "^4.14.45",
     "@types/log4javascript": "^1.4.31",
-    "@types/node": "^6.0.54"
+    "@types/node": "^6.0.55"
   }
 }
