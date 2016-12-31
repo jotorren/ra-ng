@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ConfirmationService, Confirmation } from 'primeng/primeng';
 
 @Component({
-    moduleId: module.id,
     selector: 'rang-confirm-dialog',
     template: `
         <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>

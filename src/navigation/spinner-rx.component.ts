@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs/Rx';
 import { SpinnerService } from './spinner.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'rang-spinner-rx',
     template: `
         <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>

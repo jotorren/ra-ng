@@ -5,7 +5,6 @@ import { UsernamePasswordAuthenticationToken } from './username-password-authent
 import { SecurityAuthenticatorService } from './security-authenticator.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'rang-login',
   template: `
     <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>

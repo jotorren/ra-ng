@@ -7,7 +7,6 @@ import { MenuItem } from 'primeng/primeng';
 import { EventBusService, EnterAnnouncedEventType, UpdateAnnouncedEventType, LeaveConfirmedEventType } from '../event';
 
 @Component({
-    moduleId: module.id,
     selector: 'rang-breadcrumb',
     template: `
         <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>

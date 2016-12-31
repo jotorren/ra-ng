@@ -6,7 +6,6 @@ import { TranslateService } from '../i18n';
 import { BroadcastEvent, ClearMessagesEventType } from '../event';
 
 @Component({
-    moduleId: module.id,
     selector: 'rang-messages',
     template: `
             <template [ngTemplateOutlet]="getUIComponent()" [ngOutletContext]="{ parent: this }"></template>

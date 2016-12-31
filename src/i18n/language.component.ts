@@ -5,7 +5,6 @@ import { SelectItem } from 'primeng/primeng';
 import { ConfigurationService } from '../config';
 
 @Component({
-    moduleId: module.id,
     selector: 'rang-lang-selector',
     template: `
             <div class="lang-selector">

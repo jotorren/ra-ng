@@ -1,7 +1,6 @@
 import { Component, Input, OnDestroy, ViewChild, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
     selector: 'rang-spinner',
     template: `
         <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>

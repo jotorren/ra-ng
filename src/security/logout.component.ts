@@ -4,7 +4,6 @@ import { ConfigurationService } from '../config';
 import { SecurityAuthenticatorService } from './security-authenticator.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'rang-logout',
     template: `
             <template [ngTemplateOutlet]="getUIComponent()"></template>
