@@ -67,16 +67,7 @@ function barrelTask() {
 
 function webpackTask(minify) {
 
-    var plugins = [];
-    plugins.push(new webpack.IgnorePlugin(/@angular/));
-    plugins.push(new webpack.IgnorePlugin(/cachefactory/));
-    plugins.push(new webpack.IgnorePlugin(/crypto-js/));
-    plugins.push(new webpack.IgnorePlugin(/lodash/));
-    plugins.push(new webpack.IgnorePlugin(/log4javascript/));
-    plugins.push(new webpack.IgnorePlugin(/ng2-translate/));
-    plugins.push(new webpack.IgnorePlugin(/primeng/));
-    plugins.push(new webpack.IgnorePlugin(/rxjs/));
-    
+    var plugins = [];    
     if (minify) {
         plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
     }
@@ -98,6 +89,13 @@ function webpackTask(minify) {
                 library: ["raNG"],
                 libraryTarget: "umd"
             },
+            externals: [
+                "@angular/common", "@angular/compiler", "@angular/core", "@angular/forms", 
+                "@angular/http", "@angular/platform-browser", "@angular/platform-browser-dynamic", 
+                "@angular/router",
+                "cachefactory", "crypto-js", "lodash", "log4javascript", "ng2-translate/ng2-translate",
+                "primeng/primeng", "rxjs/Rx"
+            ],
             //devtool: 'inline-source-map',
             plugins: plugins
         }))
