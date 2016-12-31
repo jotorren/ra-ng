@@ -10,19 +10,26 @@ var webpackStream = require('webpack-stream');
 
 var tsProject = ts.createProject('tsconfig.json');
 
-gulp.task('default', ['build']);
+gulp.task('default', ['pub-d', 'pub', 'pub-min', 'pub-map2']);
 
-gulp.task('clean', cleanTask);
-gulp.task('cleanBundles', cleanBundlesTask);
+gulp.task('clean', ['clean-comp', 'clean-bundles']);
+gulp.task('clean-comp', cleanTask);
+gulp.task('clean-bundles', cleanBundlesTask);
 
-gulp.task('tsc', ['clean'], tscTask);
-gulp.task('tscDev', ['clean'], tscDevTask);
+gulp.task('tsc', ['clean-comp'], tscTask);
+gulp.task('tsc-map', ['clean-comp'], tscDevTask);
+gulp.task('tsc-d', tscSingleDefTask);
 
 gulp.task('build', ['tsc'], barrelTask);
-gulp.task('buildDev', ['tscDev'], barrelTask);
 
-gulp.task('webpack', webpackTask.bind(null, false));
-gulp.task('webpack-min', webpackTask.bind(null, true));
+gulp.task('pack', webpackTask.bind(null, false));
+gulp.task('pack-min', webpackTask.bind(null, true));
+
+gulp.task('pub-d', ['clean'], tscSingleDefTask);
+gulp.task('pub', ['clean', 'build'], webpackTask.bind(null, false));
+gulp.task('pub-min', ['clean', 'build'], webpackTask.bind(null, true));
+gulp.task('pub-map', ['pub', 'pub-min'], tscDevTask);
+gulp.task('pub-map2', ['pub-map'], barrelTask);
 
 function cleanTask() {
     return merge([
@@ -57,6 +64,23 @@ function tscDevTask() {
             .pipe(sourcemaps.write()) // inlined maps
             .pipe(gulp.dest('dist/src'))
     ]);
+};
+
+function tscSingleDefTask() {
+    var tsResult = gulp.src('src/**/*.ts')
+        .pipe(ts({
+            target: "es5",
+            module: "amd",
+            moduleResolution: "node",
+            declaration: true,
+            emitDecoratorMetadata: true,
+            experimentalDecorators: true,
+            removeComments: false,
+            noImplicitAny: false,
+            outFile: "ra-ng.js"
+        }));
+
+    return tsResult.dts.pipe(gulp.dest('dist/bundles'));
 };
 
 function barrelTask() {

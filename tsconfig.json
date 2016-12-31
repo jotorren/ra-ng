@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    // "module": "amd",
     "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
@@ -11,7 +10,6 @@
     "removeComments": false,
     "noImplicitAny": false,
     "sourceRoot": "src",
-    // "outFile": "dist/bundles/ra-ng.amd.js",
     "outDir": "dist/src"
   },
   "typeRoots": [
