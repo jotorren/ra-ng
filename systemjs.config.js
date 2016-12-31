@@ -28,16 +28,17 @@
 
       'log4javascript': 'npm:log4javascript/log4javascript.js',
       'cachefactory': 'npm:cachefactory/dist/cachefactory.js',
-      'crypto-js': 'npm:crypto-js/index.js',
       'lodash': 'npm:lodash/lodash.js',
 
       'rxjs': 'npm:rxjs',
+      'crypto-js': 'npm:crypto-js',
       'primeng': 'npm:primeng'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       'app': { main: 'index.js', defaultExtension: 'js' },
       'rxjs': { defaultExtension: 'js' },
+      'crypto-js': { main: 'index.js', defaultExtension: 'js', format: 'cjs' },
       'primeng': { defaultExtension: 'js' }
     }
   });
