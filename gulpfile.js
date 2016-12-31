@@ -12,10 +12,11 @@ var tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('default', ['build']);
 
-gulp.task('cleanDist', cleanDist);
+gulp.task('clean', cleanTask);
+gulp.task('cleanBundles', cleanBundlesTask);
 
-gulp.task('tsc', ['cleanDist'], tscTask);
-gulp.task('tscDev', ['cleanDist'], tscDevTask);
+gulp.task('tsc', ['clean'], tscTask);
+gulp.task('tscDev', ['clean'], tscDevTask);
 
 gulp.task('build', ['tsc'], barrelTask);
 gulp.task('buildDev', ['tscDev'], barrelTask);
@@ -23,10 +24,15 @@ gulp.task('buildDev', ['tscDev'], barrelTask);
 gulp.task('webpack', webpackTask.bind(null, false));
 gulp.task('webpack-min', webpackTask.bind(null, true));
 
-function cleanDist() {
-    return gulp
-        .src('dist', { read: false })
-        .pipe(clean());
+function cleanTask() {
+    return merge([
+        gulp.src('dist/index.*', { read: false }).pipe(clean()),
+        gulp.src('dist/src', { read: false }).pipe(clean())
+    ]);
+}
+
+function cleanBundlesTask() {
+    return gulp.src('dist/bundles', { read: false }).pipe(clean());
 }
 
 function tscTask() {
