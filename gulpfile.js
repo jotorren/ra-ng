@@ -47,7 +47,8 @@ function tscDevTask() {
     return merge([ // Merge the two output streams, so this task is finished when the IO of both operations is done.
         tsResult.dts.pipe(gulp.dest('dist/src')),
         tsResult.js
-            .pipe(sourcemaps.write('.'))
+            // .pipe(sourcemaps.write('.'))
+            .pipe(sourcemaps.write()) // inlined maps
             .pipe(gulp.dest('dist/src'))
     ]);
 };
