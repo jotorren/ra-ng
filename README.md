@@ -22,98 +22,10 @@ typings install file:./node_modules/ra-ng/dist/index.d.ts --name ra-ng --save
 ```
 
 # Table of Contents
-* [Getting Started](#getting-started)
 * [Programming Guide](#programming-guide)
 * [Contributors](#contributors)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
-
-# Getting Started
-
-Clone [ra-ng-quickstart](https://github.com/jotorren/ra-ng-quickstart):
-```bash
-git clone https://github.com/jotorren/ra-ng-quickstart.git my-project
-```
-
-The new project will verify the following structure: 
-```
-my-project/
- ├──dist/
- ├──doc/
- ├──e2e/
- ├──node_modules/                       
- ├──typings/                       
- ├──src/
- │   ├──api/
- │   ├──environments/
- │   ├──app/
- │   │   ├──core/
- │   │   │   ├──core.module.ts
- │   │   │   └──index.ts
- │   │   │ 
- │   │   ├──layout/
- │   │   │   ├──aside.component.  [css | html | ts]
- │   │   │   ├──footer.component. [css | html | ts]
- │   │   │   ├──header.component. [css | html | ts]
- │   │   │   ├──sidebar.component.[css | html | ts]
- │   │   │   ├──topnav.component. [css | html | ts]
- │   │   │   ├──index.ts
- │   │   │   └──layout.module.ts
- │   │   │
- │   │   ├──shared/
- │   │   │   ├──config/
- │   │   │   │   ├──cache.json
- │   │   │   │   ├──log.json
- │   │   │   │   └──config.ts
- │   │   │   │ 
- │   │   │   ├──i18n/
- │   │   │   │   ├──lang_en.json
- │   │   │   │   └──lang_es.json
- │   │   │   │
- │   │   │   ├──constants.ts
- │   │   │   ├──index.ts
- │   │   │   └──shared.module.ts
- │   │   │
- │   │   ├──app.component.css
- │   │   ├──app.component.html
- │   │   ├──app.component.ts
- │   │   ├──app.module.ts
- │   │   ├──app.routing.module.ts
- │   │   └──main.ts
- │   │
- │   ├──assets/
- │   │   ├──css/
- │   │   ├──font-awesome-4.6.3/
- │   │   ├──img/
- │   │   └──js/ 
- │   │
- |   ├──favicon.ico
- |   ├──index.html
- |   └──systemjs.config.js
- │   
- ├──karma.conf.js
- ├──karma-systemjs.js
- ├──karma-test-shim.js
- ├──liteserver.json
- ├──package.json
- ├──protractor.config.js
- ├──README.md
- ├──tsconfig.json
- ├──tslint.json
- └──typings.json
- ```
-
-Finally run:
-```bash
-# change directory to your project
-cd my-project
-
-# install the dependency with npm
-npm install
-
-# install typescript definitions
-typings install
-```
 
 # Programming Guide
 
