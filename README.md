@@ -81,7 +81,7 @@ my-project/
  │   │   ├──app.routing.module.ts
  │   │   └──main.ts
  │   │
- │   ├──resources/
+ │   ├──assets/
  │   │   ├──css/
  │   │   ├──font-awesome-4.6.3/
  │   │   ├──img/
