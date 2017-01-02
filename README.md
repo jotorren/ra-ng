@@ -22,10 +22,23 @@ typings install file:./node_modules/ra-ng/dist/index.d.ts --name ra-ng --save
 ```
 
 # Table of Contents
+* [Dependencies](#dependencies)
 * [Programming Guide](#programming-guide)
 * [Contributors](#contributors)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
+
+# Dependencies
+Required 3rd party libraries:
+
+* [`@angular`](https://github.com/angular/angular)
+* [`cachefactory`](https://github.com/jmdobry/CacheFactory)
+* [`crypto-js`](https://github.com/brix/crypto-js)
+* [`lodash`](https://github.com/lodash/lodash)
+* [`log4javascript`](http://log4javascript.org/)
+* [`ng2-translate`](https://github.com/ocombe/ng2-translate)
+* [`primeng`](http://www.primefaces.org/primeng)
+* [`rxjs`](https://github.com/ReactiveX/RxJS)
 
 # Programming Guide
 
