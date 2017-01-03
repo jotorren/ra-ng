@@ -24,6 +24,20 @@ typings install file:./node_modules/ra-ng/dist/index.d.ts --name ra-ng --save
 # Table of Contents
 * [Dependencies](#dependencies)
 * [Programming Guide](#programming-guide)
+    * [Configuration files](#configuration-files)
+    * [Logging](#logging)
+    * [i18n literals](#i18n-literals)
+    * [Errors management](#errors-management)
+    * [Events](#events)
+    * [Data cache](#data-cache)
+    * [Security services](#security-services)
+    * [User context](#user-context)
+    * [Navigation and routing](#navigation-and-routing)
+    * [Forms validation](#forms-validation)
+    * [Stateful components](#stateful-components)
+    * [Model mapper](#model-mapper)
+* [Bootstrap](#bootstrap)
+* [Distribution](#distribution)
 * [Contributors](#contributors)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
@@ -32,15 +46,41 @@ typings install file:./node_modules/ra-ng/dist/index.d.ts --name ra-ng --save
 Required 3rd party libraries:
 
 * [`@angular`](https://github.com/angular/angular)
-* [`cachefactory`](https://github.com/jmdobry/CacheFactory)
-* [`crypto-js`](https://github.com/brix/crypto-js)
-* [`lodash`](https://github.com/lodash/lodash)
+* [`rxjs`](https://github.com/ReactiveX/RxJS)
 * [`log4javascript`](http://log4javascript.org/)
 * [`ng2-translate`](https://github.com/ocombe/ng2-translate)
+* [`cachefactory`](https://github.com/jmdobry/CacheFactory)
 * [`primeng`](http://www.primefaces.org/primeng)
-* [`rxjs`](https://github.com/ReactiveX/RxJS)
+* [`crypto-js`](https://github.com/brix/crypto-js). Used internally by basic/oauth2 security authentication and token based requests
+* [`lodash`](https://github.com/lodash/lodash). Used internally by `JsonUserDetailsService` only
 
 # Programming Guide
+
+## Configuration files
+
+## Logging
+
+## i18n literals
+
+## Errors management
+
+## Events
+
+## Data cache
+
+## Security services
+
+## User context
+
+## Navigation and routing
+
+## Forms validation
+
+## Stateful components
+
+## Model mapper
+
+# Bootstrap
 
 Adapt `main.ts` to use ra-ng bootstrap:
 ```ts
@@ -52,7 +92,6 @@ import { Config } from './shared';
 // The app module
 import { AppModule } from './app.module';
 
-// enableProdMode();
 ConfigurationLoaderService.bootstrap(Config).subscribe(
   (loaded) => {
     LoggerFactory.configure(Config);
@@ -67,6 +106,40 @@ ConfigurationLoaderService.bootstrap(Config).subscribe(
     console.error('Error loading configuration before launching Angular 2 bootstrap: ', err);
   });
   ```
+
+# Distribution
+
+We offer two ways of importing `ra-ng` classes: using Universal Module Definition minified bundle generated with `webpack` (recommended
+for production), or using its exploded version (better for development stage).
+
+```
+dist/
+ ├──bundles/
+ │   ├──ra-ng.d.ts          * single self contained typescript definition file
+ │   ├──ra-ng-umd.js        * single self contained javascript bundle file in Universal Module Definition format
+ |   └──ra-ng.umd.min.js    * minified version of `ra-ng-umd.js` (whitespaces and comments stripped out, shorter variable names)
+ ├──src/                    * folder containing all compiled javascript files alongside their declaration files
+ ├──index.d.ts              * exposes all definition files available in the `src` folder
+ └──index.js                * exposes all compiled javascript files available in the `src` folder
+```
+
+Note that any compiled javascript file, contains the corresponding `sourcemap` file inlined at the end of its
+content. For example, if we look at `dist/index.js` code:
+
+ ```ts
+ "use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+/**
+ * @module
+ * @description
+ * Entry point for all public APIs of the ra-ng package.
+ */
+__export(require("./src/ra-ng"));
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUE7Ozs7R0FJRztBQUNILDZCQUF3QiIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiBAbW9kdWxlXHJcbiAqIEBkZXNjcmlwdGlvblxyXG4gKiBFbnRyeSBwb2ludCBmb3IgYWxsIHB1YmxpYyBBUElzIG9mIHRoZSByYS1uZyBwYWNrYWdlLlxyXG4gKi9cclxuZXhwb3J0ICogZnJvbSAnLi9yYS1uZyc7XHJcbiJdfQ==
+ ```
 
 # Contributors
 
