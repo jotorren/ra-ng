@@ -12,7 +12,8 @@ import { OAuth2Response } from './username-password-oauth2-authentication.servic
 
 @Injectable()
 export class TokenOAuth2RequestService extends SecurityTokenRequestService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'TokenOAuth2RequestService';
 
     constructor(
         cfgService: ConfigurationService,

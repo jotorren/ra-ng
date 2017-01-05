@@ -12,7 +12,8 @@ import { UsernamePasswordAuthenticationToken } from './username-password-authent
 
 @Injectable()
 export class UsernamePasswordBasicAuthenticationService extends SecurityAuthenticationService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'UsernamePasswordBasicAuthenticationService';
     private tokenConf: any;
     private credentials: string;
 

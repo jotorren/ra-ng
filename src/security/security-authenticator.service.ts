@@ -13,7 +13,8 @@ import { SecurityUserDetailsService } from './security-userdetails.service';
 
 @Injectable()
 export class SecurityAuthenticatorService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'SecurityAuthenticatorService';
 
     constructor(
         private authenticator: SecurityAuthenticationService,

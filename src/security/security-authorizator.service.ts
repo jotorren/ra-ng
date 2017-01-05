@@ -9,7 +9,8 @@ import { SecurityAuthorizationService } from './security-authorization.service';
 
 @Injectable()
 export class SecurityAuthorizatorService implements CanActivate, CanActivateChild, CanLoad {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'SecurityAuthorizatorService';
 
     constructor(
         private cfgService: ConfigurationService,

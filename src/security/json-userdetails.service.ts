@@ -11,7 +11,9 @@ import { SecurityUserDetailsService } from './security-userdetails.service';
 
 @Injectable()
 export class JsonUserDetailsService extends SecurityUserDetailsService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'JsonUserDetailsService';
+
     private credentials: UsernamePasswordAuthenticationToken;
     private profileConf: any;
 

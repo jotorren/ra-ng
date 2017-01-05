@@ -7,7 +7,8 @@ import { SecuredObject } from './security-authorization.service';
 
 @Injectable()
 export class ProfileManagerService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'ProfileManagerService';
     private profileConf: any;
 
     constructor(

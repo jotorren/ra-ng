@@ -10,7 +10,8 @@ import { SecurityTokenRequestService } from './security-token-request.service';
 
 @Injectable()
 export class TokenBasicAuthRequestService extends SecurityTokenRequestService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'TokenBasicAuthRequestService';
 
     constructor(
         cfgService: ConfigurationService,

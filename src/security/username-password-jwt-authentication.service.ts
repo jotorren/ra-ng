@@ -14,7 +14,8 @@ export interface JwtResponse {
 
 @Injectable()
 export class UsernamePasswordJwtAuthenticationService extends SecurityAuthenticationService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'UsernamePasswordJwtAuthenticationService';
     private tokenConf: any;
 
     constructor(

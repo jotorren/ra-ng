@@ -11,7 +11,8 @@ import { SecurityUserDetailsService } from './security-userdetails.service';
 
 @Injectable()
 export class JwtUserDetailsService extends SecurityUserDetailsService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'JwtUserDetailsService';
 
     private jwtHelper: JwtHelper = new JwtHelper();
     private tokenConf: any;

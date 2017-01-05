@@ -10,7 +10,8 @@ import { SecurityTokenRequestService } from './security-token-request.service';
 
 @Injectable()
 export class TokenJwtRequestService extends SecurityTokenRequestService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'TokenJwtRequestService';
 
     private jwtHelper: JwtHelper = new JwtHelper();
 

@@ -7,7 +7,8 @@ import { ProfileManagerService } from './profile-manager.service';
 
 @Injectable()
 export class TokenAuthorizationService extends SecurityAuthorizationService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'TokenAuthorizationService';
 
     constructor(
         private cfgService: ConfigurationService,

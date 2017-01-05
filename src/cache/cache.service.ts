@@ -12,7 +12,8 @@ interface CacheDefinition {
 
 @Injectable()
 export class CacheService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'CacheService';
 
     constructor(private cfgService: ConfigurationService, private log: LogI18nService, ...names: string[]) {
 

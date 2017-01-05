@@ -18,7 +18,8 @@ export interface OAuth2Response {
 
 @Injectable()
 export class UsernamePasswordOAuth2AuthenticationService extends SecurityAuthenticationService {
-    private className = this.constructor.name;
+    // private className = this.constructor.name;
+    private className = 'UsernamePasswordOAuth2AuthenticationService';
     private tokenConf: any;
 
     constructor(
