@@ -1,10 +1,11 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
-var ts = require('gulp-typescript');
-var sourcemaps = require('gulp-sourcemaps');
 var merge = require('merge2');
-var replace = require('gulp-replace');
 var path = require('path');
+var replace = require('gulp-replace');
+var runSequence = require('run-sequence');
+var sourcemaps = require('gulp-sourcemaps');
+var ts = require('gulp-typescript');
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
 
@@ -12,24 +13,23 @@ var tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('default', ['pub-d', 'pub', 'pub-min', 'pub-map2']);
 
-gulp.task('clean', ['clean-comp', 'clean-bundles']);
-gulp.task('clean-comp', cleanTask);
-gulp.task('clean-bundles', cleanBundlesTask);
+gulp.task('default', function(callback) {
+  runSequence('build', 'bundle', 'bundle:min', 'compile:def', 'build:map', callback);
+});
 
-gulp.task('tsc', ['clean-comp'], tscTask);
-gulp.task('tsc-map', ['clean-comp'], tscDevTask);
-gulp.task('tsc-d', tscSingleDefTask);
+gulp.task('clean', ['clean:dist', 'clean:bundles']);
+gulp.task('clean:dist', cleanTask);
+gulp.task('clean:bundles', cleanBundlesTask);
 
-gulp.task('build', ['tsc'], barrelTask);
+gulp.task('compile:ts', ['clean:dist'], tscTask);
+gulp.task('compile:map', ['clean:dist'], tscDevTask);
+gulp.task('compile:def', tscSingleDefTask);
 
-gulp.task('pack', webpackTask.bind(null, false));
-gulp.task('pack-min', webpackTask.bind(null, true));
+gulp.task('build', ['compile:ts'], barrelTask);
+gulp.task('build:map', ['compile:map'], barrelTask);
 
-gulp.task('pub-d', ['clean'], tscSingleDefTask);
-gulp.task('pub', ['clean', 'build'], webpackTask.bind(null, false));
-gulp.task('pub-min', ['clean', 'build'], webpackTask.bind(null, true));
-gulp.task('pub-map', ['pub', 'pub-min'], tscDevTask);
-gulp.task('pub-map2', ['pub-map'], barrelTask);
+gulp.task('bundle', webpackTask.bind(null, false));
+gulp.task('bundle:min', webpackTask.bind(null, true));
 
 function cleanTask() {
     return merge([
