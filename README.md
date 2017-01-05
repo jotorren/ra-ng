@@ -36,7 +36,6 @@ typings install file:./node_modules/ra-ng/dist/index.d.ts --name ra-ng --save
     * [Forms validation](#forms-validation)
     * [Stateful components](#stateful-components)
     * [Model mapper](#model-mapper)
-* [Bootstrap](#bootstrap)
 * [Distribution](#distribution)
 * [Contributors](#contributors)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
@@ -80,32 +79,6 @@ Required 3rd party libraries:
 
 ## Model mapper
 
-# Bootstrap
-
-Adapt `main.ts` to use ra-ng bootstrap:
-```ts
-// The browser platform with a compiler
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { ConfigurationLoaderService, LoggerFactory, Logger } from 'ra-ng';
-import { Config } from './shared';
-
-// The app module
-import { AppModule } from './app.module';
-
-ConfigurationLoaderService.bootstrap(Config).subscribe(
-  (loaded) => {
-    LoggerFactory.configure(Config);
-    const LOG: Logger = LoggerFactory.getLogger('root');
-
-    LOG.info('Imported JSON configuration for modules: ' + loaded);
-
-    // Compile and launch the module
-    platformBrowserDynamic().bootstrapModule(AppModule);
-  },
-  (err) => {
-    console.error('Error loading configuration before launching Angular 2 bootstrap: ', err);
-  });
-  ```
 
 # Distribution
 
