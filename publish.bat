@@ -1,6 +1,6 @@
 cd C:\portable\data\git\ra-ng\dist
 copy ..\package.json .
-copy ..\README.md .
+copy ..\README-npm.md .\README.md
 dir
-npm publish .
+rem npm publish .
 cd ..

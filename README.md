@@ -16,9 +16,6 @@ cd myproj
 
 # install the dependency with npm
 npm install ra-ng --save
-
-# install typescript definitions
-typings install file:./node_modules/ra-ng/dist/index.d.ts --name ra-ng --save
 ```
 
 # Table of Contents
