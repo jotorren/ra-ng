@@ -1,14 +1,14 @@
 {
   "name": "ra-ng",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "tslint": "tslint -c tslint.json src/**/*.ts",
-    "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
-    "test-once": "tsc && karma start karma.conf.js --single-run"
+    "test": "rimraf dist && tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
+    "test-once": "rimraf dist && tsc && karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
@@ -36,12 +36,13 @@
     "typescript": "2.1.5",
     "tslint": "4.3.1",
     "codelyzer": "2.0.0-beta.4",
-    
+
     "reflect-metadata": "0.1.9",
     "systemjs": "0.19.41",
     "zone.js": "0.7.4",
     
     "concurrently": "3.1.0",
+    "rimraf":"2.5.4",
 
     "jasmine-core": "2.5.2",
     "jasmine-node": "1.14.5",
@@ -68,7 +69,6 @@
 
     "typings": "2.1.0",
     "@types/cachefactory": "1.4.4",
-    "@types/core-js": "0.9.35",
     "@types/crypto-js": "3.1.32",
     "@types/jasmine": "2.5.40",
     "@types/lodash": "4.14.48",

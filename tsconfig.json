@@ -10,13 +10,19 @@
     "removeComments": false,
     "noImplicitAny": false,
     "sourceRoot": "src",
-    "outDir": "dist/src"
+    "outDir": "dist/src",
+    "lib": ["dom","es6"]
   },
-  "typeRoots": [
-    "./node_modules/@types/",
-    "./typings/modules"
-  ],
   "compileOnSave": true,
+  "buildOnSave": false,
+  "typeRoots": [
+    "node_modules/@types/",
+    "typings/modules"
+  ],
+  "filesGlob" : [
+      "**/*.ts",
+      "!node_modules/**"
+  ],
   "exclude": [
     "node_modules/*",
     "**/*-aot.ts"
