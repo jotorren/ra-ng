@@ -77,6 +77,7 @@ function tscSingleDefTask() {
             experimentalDecorators: true,
             removeComments: false,
             noImplicitAny: false,
+            lib: ["dom","es6"],
             outFile: "ra-ng.js"
         }));
 
