@@ -26,7 +26,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy, OnChanges {
     @ViewChild('default') defaultTemplate: TemplateRef<any>;
     @ContentChild(TemplateRef) bcTemplate: TemplateRef<any>;
 
-    private breadcrumb: MenuItem[];
+    breadcrumb: MenuItem[];
 
     private enterSubs: Subscription;
     private updateSubs: Subscription;

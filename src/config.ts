@@ -1,2 +1,2 @@
-export * from './config/configuration-loader.service';
-export * from './config/configuration.service';
+export { ConfigurationLoaderService, FetchResponse } from './config/configuration-loader.service';
+export { ConfigurationService } from './config/configuration.service';

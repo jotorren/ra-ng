@@ -1,2 +1,2 @@
-export * from './error/uncontrolled-errors.service';
-export * from './error/errors.service';
+export { UncontrolledErrorsService } from './error/uncontrolled-errors.service';
+export { ErrorsService } from './error/errors.service';

@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
-    "declaration": true,
+    "suppressImplicitAnyIndexErrors": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
     "sourceRoot": "src",
     "outDir": "dist/src",
-    "lib": ["dom","es6"]
+    "lib": ["dom","es2015"]
   },
   "typeRoots": [
     "node_modules/@types/",
@@ -25,6 +25,8 @@
     "node_modules/*",
     "**/*-aot.ts"
   ],
-  "compileOnSave": true,
-  "buildOnSave": false
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "skipMetadataEmit": false
+  }
 }

@@ -1,3 +1,3 @@
 export { ICache } from 'cachefactory';
 
-export * from './cache/cache.service';
+export { CacheService } from './cache/cache.service';

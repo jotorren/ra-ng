@@ -1,5 +1,5 @@
-export * from './models/mock';
-export * from './models/mock.component';
-export * from './models/datamodel';
-export * from './models/lazyload';
-export * from './models/object-mapper';
+export { Mock } from './models/mock';
+export { MockComponent } from './models/mock.component';
+export { DataModel } from './models/datamodel';
+export { isSubInterval } from './models/lazyload';
+export { getKeyValue, objectMapper, setKeyValue } from './models/object-mapper';
