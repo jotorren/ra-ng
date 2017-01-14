@@ -14,9 +14,8 @@
     "lib": ["dom","es2015"],
     "typeRoots": ["node_modules/@types/","typings/modules"]
   },
-  "filesGlob": [
-    "**/*.ts",
-    "!node_modules/**"
+  "include": [
+    "**/*.ts"
   ],
   "exclude": [
     "node_modules",
