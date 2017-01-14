@@ -8,3 +8,4 @@
 /.vscode/symbols.json
 /publish.txt
 /README-example.md
+*.metadata.json
