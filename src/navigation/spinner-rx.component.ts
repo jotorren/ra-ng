@@ -210,8 +210,9 @@ export class SpinnerRxComponent implements OnInit, OnDestroy {
     @ViewChild('default') defaultTemplate: TemplateRef<any>;
     @ContentChild(TemplateRef) spinnerTemplate: TemplateRef<any>;
 
+    isActive: boolean = false;
+
     private timer;
-    private isActive: boolean = false;
     private subscription: Subscription;
 
     constructor(private manager: SpinnerService) {

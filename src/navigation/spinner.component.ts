@@ -207,8 +207,9 @@ export class SpinnerComponent implements OnDestroy {
 
     @Input() public maxTime: number = 120000;
 
+    isActive: boolean = false;
+
     private timer;
-    private isActive: boolean = false;
 
     @Input()
     public set isRunning(value: boolean) {
