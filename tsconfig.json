@@ -11,12 +11,9 @@
     "noImplicitAny": false,
     "sourceRoot": "src",
     "outDir": "dist/src",
-    "lib": ["dom","es6"]
+    "lib": ["dom","es6"],
+    "typeRoots": ["node_modules/@types/","typings/modules"]
   },
-  "typeRoots": [
-    "node_modules/@types/",
-    "typings/modules"
-  ],
   "filesGlob": [
     "**/*.ts",
     "!node_modules/**"
