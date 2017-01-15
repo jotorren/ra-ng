@@ -6,10 +6,11 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "ngc":"ngc -p tsconfig-aot.json",
+    "ngc:w":"ngc -p tsconfig-aot.json -w",
     "tslint": "tslint -c tslint.json src/**/*.ts",
-    "build": "rimraf dist && gulp",
-    "test": "rimraf dist && tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
-    "test-once": "rimraf dist && tsc && karma start karma.conf.js --single-run"
+    "test": "rimraf aot && rimraf dist && tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
+    "test-once": "rimraf aot && rimraf dist && tsc && karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
@@ -63,6 +64,7 @@
 
     "gulp": "3.9.1",
     "gulp-clean": "0.3.2",
+    "gulp-ngc":"0.1.2",
     "gulp-replace": "0.5.4",
     "gulp-sourcemaps": "2.3.1",
     "gulp-typescript": "3.1.4",

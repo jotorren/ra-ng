@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var merge = require('merge2');
+var ngc = require('gulp-ngc');
 var path = require('path');
 var replace = require('gulp-replace');
 var runSequence = require('run-sequence');
@@ -10,23 +11,28 @@ var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
 
 var tsProject = ts.createProject('tsconfig.json');
+var tsProjectDef = ts.createProject('tsconfig.json', { module: 'amd', outFile: 'ra-ng.js' });
+var aotProject = ngc('tsconfig-aot.json');
 
-gulp.task('default', ['pub-d', 'pub', 'pub-min', 'pub-map2']);
-
-gulp.task('default', function(callback) {
-  runSequence('build', 'bundle', 'bundle:min', 'compile:def', 'build:map', callback);
+gulp.task('default', function (callback) {
+    runSequence('build', 'clean:bundles', 'bundle', 'bundle:min', 'compile:def', 'build:aot', callback);
 });
 
-gulp.task('clean', ['clean:dist', 'clean:bundles']);
+gulp.task('clean', ['clean:dist', 'clean:bundles', 'clean:aot']);
 gulp.task('clean:dist', cleanTask);
 gulp.task('clean:bundles', cleanBundlesTask);
+gulp.task('clean:aot', cleanAotTask);
 
 gulp.task('compile:ts', ['clean:dist'], tscTask);
-gulp.task('compile:map', ['clean:dist'], tscDevTask);
-gulp.task('compile:def', tscSingleDefTask);
+gulp.task('compile:map', ['clean:dist'], tscSourceMapTask);
+gulp.task('compile:def', tscDefinitionTask);
+gulp.task('compile:aot', ['clean:aot'], () => {
+    return ngc('tsconfig-aot.json');
+});
 
 gulp.task('build', ['compile:ts'], barrelTask);
 gulp.task('build:map', ['compile:map'], barrelTask);
+gulp.task('build:aot', ['compile:aot'], barrelTask);
 
 gulp.task('bundle', webpackTask.bind(null, false));
 gulp.task('bundle:min', webpackTask.bind(null, true));
@@ -42,21 +48,25 @@ function cleanBundlesTask() {
     return gulp.src('dist/bundles', { read: false }).pipe(clean());
 }
 
+function cleanAotTask() {
+    return merge([
+        gulp.src('aot', { read: false }).pipe(clean()),
+        gulp.src('dist/src', { read: false }).pipe(clean())
+    ]);
+}
+
 function tscTask() {
     var tsResult = gulp.src("src/**/*.ts")
         .pipe(tsProject());
-    
-    return merge([ // Merge the two output streams, so this task is finished when the IO of both operations is done.
-        tsResult.dts.pipe(gulp.dest('dist/src')),
-        tsResult.js.pipe(gulp.dest('dist/src'))
-    ]);
+
+    return tsResult.js.pipe(gulp.dest('dist/src'));
 };
 
-function tscDevTask() {
+function tscSourceMapTask() {
     var tsResult = gulp.src("src/**/*.ts")
         .pipe(sourcemaps.init())
         .pipe(tsProject());
-    
+
     return merge([ // Merge the two output streams, so this task is finished when the IO of both operations is done.
         tsResult.dts.pipe(gulp.dest('dist/src')),
         tsResult.js
@@ -66,35 +76,24 @@ function tscDevTask() {
     ]);
 };
 
-function tscSingleDefTask() {
-    var tsResult = gulp.src('src/**/*.ts')
-        .pipe(ts({
-            target: "es5",
-            module: "amd",
-            moduleResolution: "node",
-            declaration: true,
-            emitDecoratorMetadata: true,
-            experimentalDecorators: true,
-            removeComments: false,
-            noImplicitAny: false,
-            lib: ["dom","es6"],
-            outFile: "ra-ng.js"
-        }));
+function tscDefinitionTask() {
+    var tsResult = gulp.src("src/**/*.ts")
+        .pipe(tsProjectDef());
 
     return tsResult.dts.pipe(gulp.dest('dist/bundles'));
 };
 
 function barrelTask() {
     return gulp.src(['dist/src/index.d.ts', 'dist/src/index.js'])
-    .pipe(replace('./ra-ng', './src/ra-ng'))
-    .pipe(gulp.dest(function(file){ return 'dist/'}));
+        .pipe(replace('./ra-ng', './src/ra-ng'))
+        .pipe(gulp.dest(function (file) { return 'dist/' }));
 }
 
 function webpackTask(minify) {
 
-    var plugins = [];    
+    var plugins = [];
     if (minify) {
-        plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
+        plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }));
     }
 
     var mainFile = './dist/index.js';
@@ -115,8 +114,8 @@ function webpackTask(minify) {
                 libraryTarget: "umd"
             },
             externals: [
-                "@angular/common", "@angular/compiler", "@angular/core", "@angular/forms", 
-                "@angular/http", "@angular/platform-browser", "@angular/platform-browser-dynamic", 
+                "@angular/common", "@angular/compiler", "@angular/core", "@angular/forms",
+                "@angular/http", "@angular/platform-browser", "@angular/platform-browser-dynamic",
                 "@angular/router",
                 "cachefactory", "crypto-js", "lodash", "log4javascript", "ng2-translate/ng2-translate",
                 "primeng/primeng", "rxjs/Rx"

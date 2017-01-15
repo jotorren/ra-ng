@@ -1,25 +1,26 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": true,
-    "suppressImplicitAnyIndexErrors": true,
+    "inlineSourceMap": true,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "sourceRoot": "src",
+    "suppressImplicitAnyIndexErrors": true,
     "outDir": "dist/src",
-    "lib": ["dom","es2015"],
+    "lib": ["dom","es6"],
     "typeRoots": ["node_modules/@types/","typings/modules"]
   },
   "include": [
-    "**/*.ts"
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "**/*-aot.ts"
+    "dist",
+    "aot"
   ],
   "angularCompilerOptions": {
     "genDir": "aot",
