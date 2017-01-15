@@ -12,11 +12,11 @@ export class ValidateOnBlurDirective {
     constructor(public formControl: NgControl, private validator: FormValidatorService) {
     }
 
-    @HostListener('focus') onFocus($event) {
+    @HostListener('focus') onFocus() {
         this.formControl.control.markAsUntouched(false);
     }
 
-    @HostListener('blur') onBlur($event) {
+    @HostListener('blur') onBlur() {
         this.validator.formName = this.validateOnblur;
         this.validator.validateControl(this.formControl, this.formControl.path);
         this.formControl.control.markAsTouched(true);

@@ -21,7 +21,6 @@ import { LanguageComponent } from './i18n/language.component';
 import { SpinnerComponent } from './navigation/spinner.component';
 import { SpinnerRxComponent } from './navigation/spinner-rx.component';
 import { BreadcrumbComponent } from './navigation/breadcrumb.component';
-import { BreadcrumbedComponent } from './navigation/breadcrumbed.component';
 import { ConfirmationDialogComponent } from './navigation/confirmation-dialog.component';
 import { ValidateOnBlurDirective } from './validation/validate-on-blur.directive';
 
@@ -60,7 +59,7 @@ import { TokenAuthorizationService } from './security/token-authorization.servic
   ],
   declarations: [
     MockComponent, LoginComponent, LogoutComponent, ForbiddenComponent, MessagesComponent, LanguageComponent,
-    SpinnerComponent, SpinnerRxComponent, BreadcrumbComponent, BreadcrumbedComponent, ConfirmationDialogComponent,
+    SpinnerComponent, SpinnerRxComponent, BreadcrumbComponent, ConfirmationDialogComponent,
     ValidateOnBlurDirective
   ],
   exports: [
@@ -68,7 +67,7 @@ import { TokenAuthorizationService } from './security/token-authorization.servic
     MessagesModule, GrowlModule, PanelModule, DropdownModule, ToggleButtonModule, BreadcrumbModule,
     ConfirmDialogModule,
     MockComponent, LoginComponent, LogoutComponent, ForbiddenComponent, MessagesComponent, LanguageComponent,
-    SpinnerComponent, SpinnerRxComponent, BreadcrumbComponent, BreadcrumbedComponent, ConfirmationDialogComponent,
+    SpinnerComponent, SpinnerRxComponent, BreadcrumbComponent, ConfirmationDialogComponent,
     ValidateOnBlurDirective
   ]
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
@@ -6,9 +6,6 @@ import { TranslateService, LangChangeEvent } from '../i18n';
 import { EventBusService, BroadcastEvent, EnterAnnouncedEventType, UpdateAnnouncedEventType, LeaveConfirmedEventType } from '../event';
 import { BreadcrumbItem } from './breadcrumb.service';
 
-@Component({
-  template: ''
-})
 export class BreadcrumbedComponent implements OnInit, OnDestroy {
   item: BreadcrumbItem;
 
