@@ -92,7 +92,7 @@ dist/
  │   ├──ra-ng.d.ts          * single self contained typescript definition file
  │   ├──ra-ng-umd.js        * single self contained javascript bundle file in Universal Module Definition format
  |   └──ra-ng.umd.min.js    * minified version of `ra-ng-umd.js` (whitespaces and comments stripped out, shorter variable names)
- ├──src/                    * folder containing all `es2015` sources alongside their declaration and AoT metadata files
+ ├──src/                    * folder containing all `es2015` sources alongside their type definitions and the AoT metadata files
  ├──index.d.ts              * exposes all definition files available in the `src` folder
  ├──index.js                * exposes all `es2015` sources available in the `src` folder
  ├──index.metadata.json     * exposes all metadata files available in the `src` folder

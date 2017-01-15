@@ -1,6 +1,7 @@
 # ra-ng
 
-Module that aims to agilize the development of an Angular2 application with PrimeNG.
+Module that aims to agilize the development of an **Angular2** application with **PrimeNG**. It can be used with either compiler: 
+**Just-in-time (JIT)** or **Ahead-of-Time (AOT)**.
 
 # Contributors
 
