@@ -115,8 +115,7 @@ function webpackTask(minify) {
             },
             externals: [
                 "@angular/common", "@angular/compiler", "@angular/core", "@angular/forms",
-                "@angular/http", "@angular/platform-browser", "@angular/platform-browser-dynamic",
-                "@angular/router",
+                "@angular/http", "@angular/router",
                 "cachefactory", "crypto-js", "lodash", "log4javascript", "ng2-translate/ng2-translate",
                 "primeng/primeng", "rxjs/Rx"
             ],
