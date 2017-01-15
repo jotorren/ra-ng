@@ -6,7 +6,8 @@
 
 # ra-ng
 
-Module that aims to agilize the development of an Angular2 application with PrimeNG.
+Module that aims to agilize the development of an **Angular2** application with **PrimeNG**. It can be used with either compiler: 
+**Just-in-time (JIT)** or **Ahead-of-Time (AOT)**.
 
 ### Quick start
 
@@ -79,8 +80,11 @@ Required 3rd party libraries:
 
 # Distribution
 
-We offer two ways of importing `ra-ng` classes: using Universal Module Definition minified bundle generated with `webpack` (recommended
-for production), or using its exploded version (better for development stage).
+After importing `ra-ng` node module, you will find a **Universal Module Definition** minified bundle generated with `webpack` (recommended
+for production) and a folder containing: 
+* `es2015` transpiled sources (**Rollup** can only **Tree Shake** `es2015` modules), 
+* the library type definitions (`.d.ts`), 
+* and the metadata files (`.metadata.json`) to use in an **AoT** compiled application.
 
 ```
 dist/
@@ -88,28 +92,36 @@ dist/
  │   ├──ra-ng.d.ts          * single self contained typescript definition file
  │   ├──ra-ng-umd.js        * single self contained javascript bundle file in Universal Module Definition format
  |   └──ra-ng.umd.min.js    * minified version of `ra-ng-umd.js` (whitespaces and comments stripped out, shorter variable names)
- ├──src/                    * folder containing all compiled javascript files alongside their declaration files
+ ├──src/                    * folder containing all `es2015` sources alongside their declaration and AoT metadata files
  ├──index.d.ts              * exposes all definition files available in the `src` folder
- └──index.js                * exposes all compiled javascript files available in the `src` folder
+ ├──index.js                * exposes all `es2015` sources available in the `src` folder
+ ├──index.metadata.json     * exposes all metadata files available in the `src` folder
+ ├──package.json
+ └──README.md
 ```
 
-Note that any compiled javascript file, contains the corresponding `sourcemap` file inlined at the end of its
+Note that any `es2015` file, contains the corresponding `sourcemap` file inlined at the end of its
 content. For example, if we look at `dist/index.js` code:
 
  ```ts
- "use strict";
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-/**
+ /**
  * @module
  * @description
  * Entry point for all public APIs of the ra-ng package.
  */
-__export(require("./src/ra-ng"));
-
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUE7Ozs7R0FJRztBQUNILDZCQUF3QiIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiBAbW9kdWxlXHJcbiAqIEBkZXNjcmlwdGlvblxyXG4gKiBFbnRyeSBwb2ludCBmb3IgYWxsIHB1YmxpYyBBUElzIG9mIHRoZSByYS1uZyBwYWNrYWdlLlxyXG4gKi9cclxuZXhwb3J0ICogZnJvbSAnLi9yYS1uZyc7XHJcbiJdfQ==
- ```
+export { RaNGModule,
+CacheService,
+ConfigurationLoaderService, ConfigurationService,
+UserContextService, UUID,
+ErrorsService, UncontrolledErrorsService,
+BroadcastEvent, BroadcastMessage, BroadcastMessageType, ClearMessagesEventType,
+EnterAnnouncedEventType, EventBusService, LeaveConfirmedEventType, MessagesComponent, UpdateAnnouncedEventType, ValidationEventType, contentHeaders, getBasicAuthHeaderValue, getHeaderValue, sendHttpRequest, sendHttpRequestParseResponse, LanguageComponent, LanguageConfigurationService, TranslatePipe,
+TranslateService, AjaxAppenderBatch, AjaxAppenderImmediate, LogAppenderFactory,
+Logger, LoggerFactory, LogI18nService, LogLayoutFactory, LogService, getKeyValue, isSubInterval, Mock, MockComponent, objectMapper, setKeyValue,
+AsyncConfirmationService, BreadcrumbComponent, BreadcrumbedComponent, CanDeactivateGuard, ConfirmationDialogComponent, recoverState, removeState, SaveProperty, saveState, SpinnerComponent, SpinnerRxComponent, SpinnerService, BypassAuthenticationService, BypassAuthorizationService, BypassTokenRequestService,
+BypassUserDetailsService, CryptoService, DenyAuthorizationService, ForbiddenComponent, JsonUserDetailsService, JwtHelper, JwtUserDetailsService, LoginComponent, LogoutComponent, ProfileManagerService, SecurityAuthenticationService, SecurityAuthenticationToken, SecurityAuthenticatorService, SecurityAuthorizationService, SecurityAuthorizatorService, SecurityTokenRequestService, SecurityUserDetailsService, TokenAuthorizationService, TokenBasicAuthRequestService, TokenJwtRequestService, TokenOAuth2RequestService, UsernamePasswordAuthenticationToken, UsernamePasswordBasicAuthenticationService, UsernamePasswordJwtAuthenticationService, UsernamePasswordOAuth2AuthenticationService, escapeRegExp, FormValidatorService, isArrayOfTypes, isUndefined, isValidField,
+validateField, validateObject, ValidateOnBlurDirective } from './src/ra-ng';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7R0FJRztBQUNILE9BQU8sRUFDSCxVQUFVLEVBQUUsZUFBZTtBQUMzQixZQUFZLEVBQVUsUUFBUTtBQUM5QiwwQkFBMEIsRUFBRSxvQkFBb0IsRUFBaUIsU0FBUztBQUMxRSxrQkFBa0IsRUFBRSxJQUFJLEVBQUUsTUFBTTtBQUNoQyxhQUFhLEVBQUUseUJBQXlCLEVBQUUsUUFBUTtBQUNsRCxjQUFjLEVBQUUsZ0JBQWdCLEVBQUUsb0JBQW9CLEVBQUUsc0JBQXNCLEVBQUUsUUFBUTtBQUN4Rix1QkFBdUIsRUFBRSxlQUFlLEVBQUUsdUJBQXVCLEVBQ2pFLGlCQUFpQixFQUFFLHdCQUF3QixFQUFFLG1CQUFtQixFQUNoRSxjQUFjLEVBQUUsdUJBQXVCLEVBQUUsY0FBYyxFQUNuQyxlQUFlLEVBQUUsNEJBQTRCLEVBQ2hELGlCQUFpQixFQUFFLDRCQUE0QixFQUFFLGFBQWEsRUFBRSxPQUFPO0FBQ3hGLGdCQUFnQixFQUNoQixpQkFBaUIsRUFBRSxxQkFBcUIsRUFBd0Isa0JBQWtCLEVBQUUsTUFBTTtBQUMxRixNQUFNLEVBQUUsYUFBYSxFQUFFLGNBQWMsRUFBRSxnQkFBZ0IsRUFBRSxVQUFVLEVBRXhELFdBQVcsRUFBRSxhQUFhLEVBQUUsSUFBSSxFQUFFLGFBQWEsRUFBRSxZQUFZLEVBQUUsV0FBVyxFQUFFLFNBQVM7QUFDaEcsd0JBQXdCLEVBQUUsbUJBQW1CLEVBQUUscUJBQXFCLEVBQzVDLGtCQUFrQixFQUFFLDJCQUEyQixFQUFFLFlBQVksRUFDckYsV0FBVyxFQUFFLFlBQVksRUFBRSxTQUFTLEVBQUUsZ0JBQWdCLEVBQUUsa0JBQWtCLEVBQUUsY0FBYyxFQUMxRiwyQkFBMkIsRUFBRSwwQkFBMEIsRUFBRSx5QkFBeUIsRUFBRSxXQUFXO0FBQy9GLHdCQUF3QixFQUFFLGFBQWEsRUFBRSx3QkFBd0IsRUFBRSxrQkFBa0IsRUFDckYsc0JBQXNCLEVBQUUsU0FBUyxFQUFlLHFCQUFxQixFQUFFLGNBQWMsRUFBRSxlQUFlLEVBQ3RGLHFCQUFxQixFQUFpQiw2QkFBNkIsRUFDbkYsMkJBQTJCLEVBQUUsNEJBQTRCLEVBQUUsNEJBQTRCLEVBQ3ZGLDJCQUEyQixFQUFFLDJCQUEyQixFQUFFLDBCQUEwQixFQUNwRix5QkFBeUIsRUFBRSw0QkFBNEIsRUFBRSxzQkFBc0IsRUFDL0UseUJBQXlCLEVBQUUsbUNBQW1DLEVBQUUsMENBQTBDLEVBQzFHLHdDQUF3QyxFQUFFLDJDQUEyQyxFQUNwRSxZQUFZLEVBQUUsb0JBQW9CLEVBQUUsY0FBYyxFQUFFLFdBQVcsRUFBRSxZQUFZLEVBQUUsYUFBYTtBQUM3RyxhQUFhLEVBQUUsY0FBYyxFQUFFLHVCQUF1QixFQUN6RCxNQUFNLFNBQVMsQ0FBQyJ9 ```
 
 # Contributors
 
