@@ -84,7 +84,7 @@ function tscDefinitionTask() {
 };
 
 function barrelTask() {
-    return gulp.src(['dist/src/index.d.ts', 'dist/src/index.js'])
+    return gulp.src(['dist/src/index.d.ts', 'dist/src/index.js', 'dist/src/index.metadata.json'])
         .pipe(replace('./ra-ng', './src/ra-ng'))
         .pipe(gulp.dest(function (file) { return 'dist/' }));
 }
