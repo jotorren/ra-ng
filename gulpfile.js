@@ -12,7 +12,6 @@ var webpackStream = require('webpack-stream');
 
 var tsProject = ts.createProject('tsconfig.json');
 var tsProjectDef = ts.createProject('tsconfig.json', { module: 'amd', outFile: 'ra-ng.js' });
-var aotProject = ngc('tsconfig-aot.json');
 
 gulp.task('default', function (callback) {
     runSequence('build', 'clean:bundles', 'bundle', 'bundle:min', 'compile:def', 'build:aot', callback);
