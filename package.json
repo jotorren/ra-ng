@@ -8,8 +8,8 @@
     "tsc:w": "tsc -w",
     "ngc":"ngc -p tsconfig-aot.json",
     "tslint": "tslint -c tslint.json src/**/*.ts",
-    "test": "rimraf aot && rimraf dist && tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
-    "test-once": "rimraf aot && rimraf dist && tsc && karma start karma.conf.js --single-run"
+    "test": "rimraf aot dist && tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
+    "test-once": "rimraf aot dist && tsc && karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
