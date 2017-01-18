@@ -1,11 +1,36 @@
-/node_modules
-/typings
-/aot
-/dist
-/test
-/coverage
-/.typingsrc
-/.vscode/symbols.json
+build
+dist
+tmp
+
+# Ignore Node & Bower & JSPM
+###################
+node_modules
+bower_components
+jspm_packages
+
+# Ignore Test reporters
+###################
+test
+coverage
+report
+doc
+
+# Ignore typings
+###################
+.typingsrc
+typings
+
+# Ignore transpiled code
+###################
+src/app/**/*.js
+src/app/**/*.map
+*.metadata.json
+
+# Ignore vscode symbols
+###################
+.vscode/symbols.json
+
+# Other
+#######
 /publish.txt
 /README-example.md
-*.metadata.json
