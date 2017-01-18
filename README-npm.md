@@ -1,7 +1,9 @@
 # ra-ng
 
 Module that aims to agilize the development of an **Angular2** application with **PrimeNG**. It can be used with either compiler: 
-**Just-in-time (JIT)** or **Ahead-of-Time (AOT)**.
+**Just-in-time (JiT)** or **Ahead-of-Time (AoT)**.
+
+Please see the [github repo](https://github.com/jotorren/ra-ng) for further information.
 
 # Contributors
 
