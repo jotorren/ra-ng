@@ -22,8 +22,8 @@ typings
 
 # Ignore transpiled code
 ###################
-src/app/**/*.js
-src/app/**/*.map
+src/**/*.js
+src/**/*.map
 *.metadata.json
 
 # Ignore vscode symbols
