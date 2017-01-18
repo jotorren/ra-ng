@@ -7,9 +7,12 @@
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": false,
+    "removeComments": true,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmitHelpers": false,
+    "allowUnreachableCode": false,
     "outDir": "dist/src",
     "lib": ["dom","es6"],
     "typeRoots": ["node_modules/@types/","typings/modules"]
@@ -22,6 +25,6 @@
     "dist",
     "aot"
   ],
-  "compileOnSave": true,
+  "compileOnSave": false,
   "buildOnSave": false
 }
