@@ -7,7 +7,7 @@
 # ra-ng
 
 Module that aims to agilize the development of an **Angular2** application with **PrimeNG**. It can be used with either compiler: 
-**Just-in-time (JIT)** or **Ahead-of-Time (AOT)**.
+**Just-in-time (JiT)** or **Ahead-of-Time (AoT)**.
 
 ### Quick start
 
@@ -54,29 +54,40 @@ Required 3rd party libraries:
 # Programming Guide
 
 ## Configuration files
+*(asap)*
 
 ## Logging
+*(asap)*
 
 ## i18n literals
+*(asap)*
 
 ## Errors management
+*(asap)*
 
 ## Events
+*(asap)*
 
 ## Data cache
+*(asap)*
 
 ## Security services
+*(asap)*
 
 ## User context
+*(asap)*
 
 ## Navigation and routing
+*(asap)*
 
 ## Forms validation
+*(asap)*
 
 ## Stateful components
+*(asap)*
 
 ## Model mapper
-
+*(asap)*
 
 # Distribution
 
