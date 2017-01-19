@@ -29,7 +29,7 @@ export class CacheService {
             for (let def of <CacheDefinition[]>cfgService.conf['cache']){
                 if (names.length === 0 || (names.indexOf(def.name) !== -1)) {
                     let opts: CacheOptions = def.options ? def.options : defaultOptions;
-                    this[def.name] = CacheFactory.createCache(def.name + suffix, opts);
+                    this[def.name] = CacheFactory(def.name + suffix, opts);
                     this[def.name].enable();
                     this.log.info('log.cache.creation', { class: this.className, name: def.name + suffix });
                 }
