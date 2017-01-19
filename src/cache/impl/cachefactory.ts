@@ -22,6 +22,15 @@ export interface CacheOptions {
 }
 
 /**
+ * Source code imported from:
+ *    https://github.com/jmdobry/CacheFactory
+ *    https://github.com/jmdobry/yabh
+ * 
+ * Documentation available at:
+ *    http://www.pseudobry.com/CacheFactory/2.0.0/index.html
+ */
+
+/**
  * A instance of `CacheFactory` holds multiple caches, and provides methods for
  * manipulating all of the caches at once.
  *
