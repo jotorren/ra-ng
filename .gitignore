@@ -1,6 +1,7 @@
 build
 dist
 tmp
+aot
 
 # Ignore Node & Bower & JSPM
 ###################
