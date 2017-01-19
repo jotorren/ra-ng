@@ -27,7 +27,6 @@
       'ng2-translate/ng2-translate': 'npm:ng2-translate/bundles/ng2-translate.umd.js',
 
       'log4javascript': 'npm:log4javascript/log4javascript.js',
-      'cachefactory': 'npm:cachefactory/dist/cachefactory.js',
       'lodash': 'npm:lodash/lodash.js',
 
       'rxjs': 'npm:rxjs',

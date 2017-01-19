@@ -46,7 +46,6 @@ Required 3rd party libraries:
 * [`rxjs`](https://github.com/ReactiveX/RxJS)
 * [`log4javascript`](http://log4javascript.org/)
 * [`ng2-translate`](https://github.com/ocombe/ng2-translate)
-* [`cachefactory`](https://github.com/jmdobry/CacheFactory)
 * [`primeng`](http://www.primefaces.org/primeng)
 * [`crypto-js`](https://github.com/brix/crypto-js). Used internally by basic/oauth2 security authentication and token based requests
 * [`lodash`](https://github.com/lodash/lodash). Used internally by `JsonUserDetailsService` only
@@ -121,7 +120,7 @@ content. For example, if we look at `dist/index.js` code:
  * Entry point for all public APIs of the ra-ng package.
  */
 export { RaNGModule,
-CacheService,
+CacheService, Cache, CacheFactory, CacheOptions, StorageImpl,
 ConfigurationLoaderService, ConfigurationService,
 UserContextService, UUID,
 ErrorsService, UncontrolledErrorsService,

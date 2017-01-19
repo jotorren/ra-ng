@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ConfigurationService } from '../config';
-import { CacheService, ICache } from '../cache';
+import { CacheService, Cache } from '../cache';
 
 @Injectable()
 export class UserContextService {
@@ -15,15 +15,15 @@ export class UserContextService {
         return profileConf.storage.provider.getItem(profileConf.storage.key);
     }
 
-    public get memory(): ICache {
+    public get memory(): Cache {
         return this.cache.get('memory');
     }
 
-    public get session(): ICache {
+    public get session(): Cache {
         return this.cache.get('session');
     }
 
-    public get application(): ICache {
+    public get application(): Cache {
         return this.cache.get('application');
     }
 

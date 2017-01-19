@@ -5,7 +5,7 @@
  */
 export {
     RaNGModule, // ra-ng.module
-    CacheService, ICache, // cache
+    CacheService, Cache, CacheFactory, CacheOptions, StorageImpl, // cache
     ConfigurationLoaderService, ConfigurationService, FetchResponse, // config
     UserContextService, UUID, // env
     ErrorsService, UncontrolledErrorsService, // error

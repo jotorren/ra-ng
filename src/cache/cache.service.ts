@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import * as CacheFactory from 'cachefactory';
-import { ICache, CacheOptions } from 'cachefactory';
 
 import { ConfigurationService } from '../config';
 import { LogI18nService } from '../log';
+
+import { CacheFactory, CacheOptions } from './impl/cachefactory';
+import { Cache } from './impl/cache';
 
 interface CacheDefinition {
     name: string;
@@ -17,8 +18,10 @@ export class CacheService {
 
     constructor(private cfgService: ConfigurationService, private log: LogI18nService, ...names: string[]) {
 
+        let cacheFactory = new CacheFactory();
+
         const defaultOptions: CacheOptions = {
-            disabled: true,
+            enable: false,
             onExpire: (key: any, value: any): void => {
                 this.log.debug('log.cache.expired.entry', { class: this.className, key: key, value: value });
             }
@@ -29,7 +32,7 @@ export class CacheService {
             for (let def of <CacheDefinition[]>cfgService.conf['cache']){
                 if (names.length === 0 || (names.indexOf(def.name) !== -1)) {
                     let opts: CacheOptions = def.options ? def.options : defaultOptions;
-                    this[def.name] = CacheFactory(def.name + suffix, opts);
+                    this[def.name] = cacheFactory.createCache(def.name + suffix, opts);
                     this[def.name].enable();
                     this.log.info('log.cache.creation', { class: this.className, name: def.name + suffix });
                 }
@@ -39,7 +42,7 @@ export class CacheService {
         }
     }
 
-    get(name: string): ICache {
+    get(name: string): Cache {
         return this[name];
     }
 }

@@ -1,12 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { TranslateModule } from 'ng2-translate/ng2-translate';
-import { ICache } from 'cachefactory';
 
 import { ConfigurationService } from '../config';
 import { TranslateService } from '../i18n';
 import { LogI18nService } from '../log';
 
 import { CacheService } from './cache.service';
+import { Cache } from './impl/cache';
 
 describe('CacheTest01', () => {
     let config = {
@@ -59,13 +59,13 @@ describe('CacheTest01', () => {
             expect(log).not.toBeUndefined();
 
             let raCache: CacheService;
-            let cache: ICache;
+            let cache: Cache;
 
             raCache = new CacheService(cfgService, log, 'memory');
             expect(raCache).not.toBeNull();
             expect(raCache).not.toBeUndefined();
 
-            cache = <ICache>raCache.get('memory');
+            cache = <Cache>raCache.get('memory');
             expect(cache).not.toBeNull();
             expect(cache).not.toBeUndefined();
 
