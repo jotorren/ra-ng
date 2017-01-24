@@ -14,7 +14,7 @@
     "noEmitHelpers": false,
     "allowUnreachableCode": false,
     "outDir": "dist/src",
-    "lib": ["dom","es6"],
+    "lib": ["dom","es2015"],
     "typeRoots": ["node_modules/@types/","typings/modules"]
   },
   "include": [
