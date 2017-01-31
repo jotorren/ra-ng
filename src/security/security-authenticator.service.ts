@@ -7,6 +7,7 @@ import { LogI18nService } from '../log';
 import { UserContextService } from '../env';
 import { ErrorsService } from '../error';
 import { EventBusService, BroadcastMessage } from '../event';
+import { SpinnerService } from '../navigation/spinner.service';
 import { SecurityAuthenticationToken } from './security-authentication-token';
 import { SecurityAuthenticationService } from './security-authentication.service';
 import { SecurityUserDetailsService } from './security-userdetails.service';
@@ -24,10 +25,12 @@ export class SecurityAuthenticatorService {
         private router: Router,
         private i18n: TranslateService,
         private log: LogI18nService,
-        private eventbus: EventBusService) {
+        private eventbus: EventBusService,
+        private spinner: SpinnerService) {
     }
 
     login(token: SecurityAuthenticationToken) {
+        this.spinner.toggle(true);
         this.authenticator.tryLogin(token)
             .map(response => { this.authenticator.onLogin(response); })
             .flatMap((loginResponse) => {
@@ -44,12 +47,16 @@ export class SecurityAuthenticatorService {
                     this.context.principal = token.principal;
                     this.router.navigate([this.cfgService.conf.security.authenticatedDefaultView]);
                 }
+                this.spinner.toggle(false);
             },
-            error => this.notifyError(error)
-            );
+            error => {
+                this.notifyError(error);
+                this.spinner.toggle(false);
+            });
     }
 
     logout() {
+        this.spinner.toggle(true);
         this.authenticator.tryLogout()
             .map(response => this.authenticator.onLogout(response))
             .flatMap((logoutResponse) => {
@@ -65,9 +72,12 @@ export class SecurityAuthenticatorService {
                     this.context.reset();
                     this.router.navigate([this.cfgService.conf.security.unauthenticatedView]);
                 }
+                this.spinner.toggle(false);
             },
-            error => this.notifyError(error)
-            );
+            error => {
+                this.notifyError(error);
+                this.spinner.toggle(false);
+            });
     }
 
     private notifyError(error: any) {
