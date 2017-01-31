@@ -55,7 +55,12 @@ export class UsernamePasswordJwtAuthenticationService extends SecurityAuthentica
             });
         }
 
-        return this.http.post(this.tokenConf.endpoint, body, options);
+        let endpoint = this.tokenConf.endpoint;
+        if (this.tokenConf.urlparams) {
+            endpoint += '?' + body;
+            body = null;
+        }
+        return this.http.post(endpoint, body, options);
     }
 
     onLogin(response: any): any {
