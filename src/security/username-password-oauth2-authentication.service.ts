@@ -160,9 +160,17 @@ export class UsernamePasswordOAuth2AuthenticationService extends SecurityAuthent
             });
         }
 
-        // Remove token from localStorage
+        // Remove token from storage
         this.tokenConf.storage.provider.removeItem(this.tokenConf.storage.key);
         this.tokenConf.storage.provider.removeItem(this.tokenConf.storage.key + '_ts');
+
+        // The profile could be set by this class (during onLogin()) without no DetailsService involved, 
+        // so this class must be able to delete the profile, otherwise no one will perform the deletion
+        let profileConf = this.cfgService.conf.security.profile;
+        if (profileConf && profileConf.storage && profileConf.storage.provider && profileConf.storage.key) {
+            // Remove profile from storage
+            profileConf.storage.provider.removeItem(profileConf.storage.key);
+        }
 
         return Observable.of('{"security": "token removed"}');
     }
