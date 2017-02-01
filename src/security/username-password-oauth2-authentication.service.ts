@@ -22,6 +22,8 @@ export class UsernamePasswordOAuth2AuthenticationService extends SecurityAuthent
     private className = 'UsernamePasswordOAuth2AuthenticationService';
     private tokenConf: any;
 
+    private preloaded = false;
+ 
     constructor(
         private cfgService: ConfigurationService,
         private http: Http,
@@ -132,6 +134,7 @@ export class UsernamePasswordOAuth2AuthenticationService extends SecurityAuthent
                 let profile = response.json()[profileConf.oauth2.fieldProfile];
                 if (profile) {
                     profileConf.storage.provider.setItem(profileConf.storage.key, profile);
+                    this.preloaded = true;
                 }
             }
         }
@@ -166,10 +169,12 @@ export class UsernamePasswordOAuth2AuthenticationService extends SecurityAuthent
 
         // The profile could be set by this class (during onLogin()) without no DetailsService involved, 
         // so this class must be able to delete the profile, otherwise no one will perform the deletion
-        let profileConf = this.cfgService.conf.security.profile;
-        if (profileConf && profileConf.storage && profileConf.storage.provider && profileConf.storage.key) {
-            // Remove profile from storage
-            profileConf.storage.provider.removeItem(profileConf.storage.key);
+        if (this.preloaded){
+            let profileConf = this.cfgService.conf.security.profile;
+            if (profileConf && profileConf.storage && profileConf.storage.provider && profileConf.storage.key) {
+                // Remove profile from storage
+                profileConf.storage.provider.removeItem(profileConf.storage.key);
+            }
         }
 
         return Observable.of('{"security": "token removed"}');

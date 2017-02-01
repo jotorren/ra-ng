@@ -1,6 +1,6 @@
 {
   "name": "ra-ng",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
