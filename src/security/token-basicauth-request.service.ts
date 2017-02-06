@@ -41,6 +41,6 @@ export class TokenBasicAuthRequestService extends SecurityTokenRequestService {
 
         req.headers.set(this.cfgService.conf.security.token.header.name, authHeader);
 
-        return this.http.request(req);
+         return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
     }
 }

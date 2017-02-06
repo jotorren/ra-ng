@@ -16,6 +16,6 @@ export class BypassTokenRequestService extends SecurityTokenRequestService {
     }
 
     requestWithToken(req: Request, token: string): Observable<Response> {
-        return this.http.request(req);
+        return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
     }
 }

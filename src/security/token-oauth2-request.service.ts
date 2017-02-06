@@ -61,7 +61,7 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
         }
 
         req.headers.set(tokenConf.header.name, tokenConf.header.prefix + ' ' + jsonToken.access_token);
-        return this.http.request(req);
+         return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
     }
 
     private checkTokenLocal(jsonToken: OAuth2Response, req: Request): Observable<Response> {
@@ -78,7 +78,7 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
         this.log.debug('log.security.token.oauth2.expiresin.client', { class: this.className, secs: expires_in });
 
         req.headers.set(tokenConf.header.name, tokenConf.header.prefix + ' ' + jsonToken.access_token);
-        return this.http.request(req);
+         return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
     }
 
 
@@ -104,7 +104,7 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
                 }
 
                 req.headers.set(tokenConf.header.name, tokenConf.header.prefix + ' ' + jsonToken.access_token);
-                return this.http.request(req);
+                 return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
             })
             .catch((error) => {
                 if (error instanceof Response) {

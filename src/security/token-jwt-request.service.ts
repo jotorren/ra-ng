@@ -49,6 +49,6 @@ export class TokenJwtRequestService extends SecurityTokenRequestService {
                 this.cfgService.conf.security.token.header.prefix + ' ' + token);
         }
 
-        return this.http.request(req);
+         return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
     }
 }
