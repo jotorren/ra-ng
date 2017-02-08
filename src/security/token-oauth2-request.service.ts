@@ -61,7 +61,7 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
         }
 
         req.headers.set(tokenConf.header.name, tokenConf.header.prefix + ' ' + jsonToken.access_token);
-         return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
+        return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
     }
 
     private checkTokenLocal(jsonToken: OAuth2Response, req: Request): Observable<Response> {
@@ -78,7 +78,7 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
         this.log.debug('log.security.token.oauth2.expiresin.client', { class: this.className, secs: expires_in });
 
         req.headers.set(tokenConf.header.name, tokenConf.header.prefix + ' ' + jsonToken.access_token);
-         return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
+        return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
     }
 
 
@@ -104,7 +104,7 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
                 }
 
                 req.headers.set(tokenConf.header.name, tokenConf.header.prefix + ' ' + jsonToken.access_token);
-                 return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
+                return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
             })
             .catch((error) => {
                 if (error instanceof Response) {
@@ -136,7 +136,13 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
             });
             let options = new RequestOptions({ headers: headers });
 
-            return this.http.post(tokenConf.endpoint, body, options)
+            let endpoint = tokenConf.endpoint;
+            if (tokenConf.urlparams) {
+                endpoint += '?' + body;
+                body = null;
+            }
+
+            return this.http.post(endpoint, body, options)
                 .flatMap((refresh) => {
                     let oauth2Response: OAuth2Response = <OAuth2Response>refresh.json();
                     tokenConf.storage.provider.setItem(tokenConf.storage.key, JSON.stringify(oauth2Response));
@@ -145,7 +151,7 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
                         { class: this.className, response: JSON.stringify(oauth2Response) });
 
                     req.headers.set(tokenConf.header.name, tokenConf.header.prefix + ' ' + oauth2Response.access_token);
-                    return this.http.request(req);
+                    return this.http.request(req).catch((error) => { error.request = req; return Observable.throw(error); });
                 })
                 .catch((error) => {
                     return new Observable<Response>((obs: any) => {
