@@ -65,12 +65,12 @@ export class SecurityAuthenticatorService {
             })
             .subscribe(
             profileResponse => {
-                if (!this.cfgService.conf.security || !this.cfgService.conf.security.unauthenticatedView) {
+                if (!this.cfgService.conf.security || !this.cfgService.conf.security.logoutView) {
                     this.log.error('log.rang.conf.error',
-                        { class: this.className, detail: 'security.unauthenticatedView' });
+                        { class: this.className, detail: 'security.logoutView' });
                 } else {
                     this.context.reset();
-                    this.router.navigate([this.cfgService.conf.security.unauthenticatedView]);
+                    this.router.navigate([this.cfgService.conf.security.logoutView]);
                 }
                 this.spinner.toggle(false);
             },
