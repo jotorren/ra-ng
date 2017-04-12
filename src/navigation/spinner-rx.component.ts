@@ -9,7 +9,7 @@ import { SpinnerService } from './spinner.service';
         <template [ngTemplateOutlet]="getComponentTemplate()" [ngOutletContext]="{ parent: this }"></template>
 
         <template #default>    
-            <div [hidden]="!isActive" class="sk-fading-circle">
+            <div [style.display]="isActive?'inherit':'none'" class="sk-fading-circle">
                 <div class="sk-circle1 sk-circle"></div>
                 <div class="sk-circle2 sk-circle"></div>
                 <div class="sk-circle3 sk-circle"></div>

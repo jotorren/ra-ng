@@ -19,7 +19,7 @@ import { SecurityAuthenticatorService } from './security-authenticator.service';
               <input type="text" class="form-control" id="username" placeholder="{{ 'ui.login.label.user' | translate }}" 
                 required [(ngModel)]="credentials.username"
                 name="username" #username="ngModel">
-              <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+              <div [style.display]="username.valid || username.pristine?'none':'inherit'" class="alert alert-danger">
                 {{ 'ui.login.required.user' | translate }}
               </div>
             </div>
@@ -28,7 +28,7 @@ import { SecurityAuthenticatorService } from './security-authenticator.service';
               <input type="password" class="form-control" id="password" placeholder="{{ 'ui.login.label.pwd' | translate }}" 
                 required [(ngModel)]="credentials.password"
                 name="password" #password="ngModel">
-              <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+              <div [style.display]="password.valid || password.pristine?'none':'inherit'" class="alert alert-danger">
                 {{ 'ui.login.required.password' | translate }}
               </div>
             </div>
