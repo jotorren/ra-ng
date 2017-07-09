@@ -13,7 +13,7 @@ export {
     EnterAnnouncedEventType, EventBusService, LeaveConfirmedEventType, Message,
     MessagesComponent, UpdateAnnouncedEventType, ValidationEventType,
     contentHeaders, getBasicAuthHeaderValue, getHeaderValue, HttpErrorResponse, // http
-    HttpRequestOptions, sendHttpRequest, sendHttpRequestParseResponse,
+    HttpRequestOptions, sendHttpRequest, sendHttpRequestParseResponse, fromUri2Url,
     LangChangeEvent, LanguageComponent, LanguageConfigurationService, TranslatePipe, // i18n
     TranslateService,
     AjaxAppenderBatch, AjaxAppenderImmediate, JsonLayoutParameters, LogAppenderFactory, // log

@@ -16,7 +16,7 @@ export {
 } from './event';
 export {
     contentHeaders, getBasicAuthHeaderValue, getHeaderValue, HttpErrorResponse,
-    HttpRequestOptions, sendHttpRequest, sendHttpRequestParseResponse
+    HttpRequestOptions, sendHttpRequest, sendHttpRequestParseResponse, fromUri2Url
 } from './http';
 export {
     LangChangeEvent, LanguageComponent, LanguageConfigurationService, TranslatePipe,
