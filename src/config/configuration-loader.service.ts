@@ -8,13 +8,13 @@ export interface FetchResponse {
 }
 
 export class ConfigurationLoaderService {
-    static bootstrap(selector: string, conf: any): Observable<string[]> {
+    static bootstrap(cfgUrl: string, conf: any): Observable<string[]> {
 
         let environment: Observable<any> = Observable.of('{}');
-        if (selector) {
+        if (cfgUrl) {
             environment = Observable.fromPromise(sendHttpRequest({
                 method: 'GET',
-                url: 'environments/' + selector.trim() + '.json'
+                url: cfgUrl
             }));
         }
 
