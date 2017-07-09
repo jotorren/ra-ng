@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { ConfigurationService } from '../config';
 import { LogI18nService } from '../log';
 import { TranslateService } from '../i18n';
-import { getBasicAuthHeaderValue } from '../http';
+import { getBasicAuthHeaderValue, fromUri2Url } from '../http';
 import { CryptoService } from './crypto.service';
 import { SecurityAuthenticationService } from './security-authentication.service';
 import { UsernamePasswordAuthenticationToken } from './username-password-authentication-token';
@@ -58,7 +58,7 @@ export class UsernamePasswordBasicAuthenticationService extends SecurityAuthenti
             });
         }
 
-        return this.http.get(this.tokenConf.endpoint, options);
+        return this.http.get(fromUri2Url(this.tokenConf.endpoint), options);
     }
 
     onLogin(response: any): any {

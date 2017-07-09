@@ -64,3 +64,11 @@ export function sendHttpRequestParseResponse(url: string, parser: (json: any) =>
             throw new URIError(err.statusText);
         });
 }
+
+export function fromUri2Url(uri: string): string {
+    if (uri.startsWith('http://') || uri.startsWith('https://')) {
+        return uri;
+    }
+
+    return window.location.protocol + '//' + window.location.host + uri;
+}

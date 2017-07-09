@@ -6,6 +6,7 @@ import * as _ from 'lodash';
 import { ConfigurationService } from '../config';
 import { LogI18nService } from '../log';
 import { TranslateService } from '../i18n';
+import { fromUri2Url } from '../http';
 import { UsernamePasswordAuthenticationToken } from './username-password-authentication-token';
 import { SecurityUserDetailsService } from './security-userdetails.service';
 
@@ -42,7 +43,7 @@ export class JsonUserDetailsService extends SecurityUserDetailsService {
         }
 
         this.credentials = token;
-        return this.http.get(this.profileConf.endpoint);
+        return this.http.get(fromUri2Url(this.profileConf.endpoint));
     }
 
     onLoadProfile(response: any): any {

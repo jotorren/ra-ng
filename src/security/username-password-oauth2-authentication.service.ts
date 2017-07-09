@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { ConfigurationService } from '../config';
 import { LogI18nService } from '../log';
 import { TranslateService } from '../i18n';
+import { fromUri2Url } from '../http';
 import { CryptoService } from './crypto.service';
 import { SecurityAuthenticationService } from './security-authentication.service';
 import { UsernamePasswordAuthenticationToken } from './username-password-authentication-token';
@@ -91,7 +92,7 @@ export class UsernamePasswordOAuth2AuthenticationService extends SecurityAuthent
             endpoint += '?' + body;
             body = null;
         }
-        return this.http.post(endpoint, body, options);
+        return this.http.post(fromUri2Url(endpoint), body, options);
     }
 
     onLogin(response: any): any {

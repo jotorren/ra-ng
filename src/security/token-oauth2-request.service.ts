@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { ConfigurationService } from '../config';
 import { LogI18nService } from '../log';
 import { TranslateService } from '../i18n';
+import { fromUri2Url } from '../http';
 import { ErrorsService } from '../error';
 import { CryptoService } from './crypto.service';
 import { SecurityTokenRequestService } from './security-token-request.service';
@@ -142,7 +143,7 @@ export class TokenOAuth2RequestService extends SecurityTokenRequestService {
                 body = null;
             }
 
-            return this.http.post(endpoint, body, options)
+            return this.http.post(fromUri2Url(endpoint), body, options)
                 .flatMap((refresh) => {
                     let oauth2Response: OAuth2Response = <OAuth2Response>refresh.json();
                     tokenConf.storage.provider.setItem(tokenConf.storage.key, JSON.stringify(oauth2Response));
