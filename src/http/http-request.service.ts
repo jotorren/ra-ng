@@ -66,7 +66,12 @@ export function sendHttpRequestParseResponse(url: string, parser: (json: any) =>
 }
 
 export function fromUri2Url(uri: string): string {
-    if (uri.startsWith('http://') || uri.startsWith('https://')) {
+    if (!uri) {
+        return null;
+    }
+
+    if (uri.toLowerCase().startsWith('http://') ||
+        uri.toLowerCase().startsWith('https://')) {
         return uri;
     }
 
