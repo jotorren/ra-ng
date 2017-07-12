@@ -1,5 +1,5 @@
 call gulp
-cd C:\portable\data\git\ra-ng\ra-ng\dist
+cd D:\workspaces\ra-ng-pub\ra-ng\dist
 copy ..\package.json .
 copy ..\README-npm.md .\README.md
 dir
